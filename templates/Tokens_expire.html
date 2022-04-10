@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta
+    name="description"
+    content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5"
+  />
+  <meta name="author" content="AdminKit" />
+  <meta
+    name="keywords"
+    content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+  />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="static/img/icons/icon-48x48.png" />
+
+  <link
+    rel="canonical"
+    href="https://demo-basic.adminkit.io/pages-sign-up.html"
+  />
+
+  <title>Sign Up | AdminKit Demo</title>
+
+  <link href="static/css/app.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+
+
+<style type="text/css">
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #313131;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgb(56, 56, 56), rgba(37, 117, 252, 1));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+        background: linear-gradient(to right, rgb(27, 27, 27), rgba(37, 117, 252, 1))
+    }
+</style>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <form method="POST">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase text-white">Tokens expire!</h2>
+                             
+                               
+                                <div class="form-outline form-white mb-4 pt-5">
+                                  
+                                    {{form.send_Submit_toforget(class="btn btn-outline-light btn-lg px-5,type=submit")}}
+                                </div>
+
+                                <div>
+                                    <p class="mb-0"><a href="{{url_for('login')}}" class="text-white-50 fw-bold">Log in</a>
+                                    </p>
+                                </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</section>
+

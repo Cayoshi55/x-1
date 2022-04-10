@@ -1,0 +1,156 @@
+{% extends "layout.html" %} {% block content %}
+<style type="text/css">
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #313131;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgb(56, 56, 56), rgba(37, 117, 252, 1));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+        background: linear-gradient(to right, rgb(27, 27, 27), rgba(37, 117, 252, 1))
+    }
+</style>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <form method="POST">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase text-white">Sign up</h2>
+                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                                <div class="form-outline form-white mb-4">
+                                    {% if name == "" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID")}}
+                                    <div class="invalid-feedback">
+                                        Enter UserID
+                                    </div>
+
+                                    {% else %} {{form.Regis_UserID(class="form-control form-control-lg",placeholder="User ID")}} {%endif%}
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {% if email == "" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",placeholder="Email")}}
+                                    <div class="invalid-feedback">
+                                        Enter Email
+                                    </div>
+
+                                    {% else %} {{form.Regis_UserEmail(class="form-control form-control-lg",placeholder="Email")}} {%endif%}
+                                </div>
+
+
+
+
+
+                                <div class="form-outline form-white mb-4">
+
+
+                                    {% if passlogin == "" %}
+                                    <div class="input-group has-validation">
+                                        {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                        <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword1" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+                                        <div class="invalid-feedback">
+                                            Enter Password
+                                        </div>
+                                    </div>
+                                    <div class="input-group has-validation">
+                                        {% elif passlogin == "len5" %}
+
+                                        <div class="input-group has-validation">
+                                            {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                            <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword1" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+                                            <div class="invalid-feedback">
+                                                6 characters minimum
+                                            </div>
+                                        </div>
+                                        {%else%}
+
+                                        <div class="input-group has-validation">
+                                            {{form.Regis_User_Password(class="input-group-text form-control text-start form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                            <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword1" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+                                        </div>
+                                        {%endif%}
+                                    </div>
+
+
+
+
+                                    <div class="form-outline form-white mb-4">
+
+                                        {% if Retype_password == "" %}
+                                        <div class="input-group has-validation">
+                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg",id="password",type="password",placeholder="Retype password")}}
+                                            <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+                                            <div class="invalid-feedback">
+                                                Enter Retype password
+                                            </div>
+                                        </div>
+
+                                        {% elif Retype_password == "dontmatch" %}
+
+                                        <div class="input-group has-validation">
+                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password",type="password",placeholder="Password")}}
+                                            <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+                                            <div class="invalid-feedback">
+                                                Password don't match
+                                            </div>
+                                        </div>
+                                        {%else%}
+
+                                        <div class="input-group has-validation">
+                                            {{form.Retype_password(class="input-group-text text-start form-control form-control-lg",id="password",type="password",placeholder="Retype password")}}
+                                            <span class="input-group-text">
+                                                         <i class="far fa-eye-slash" id="togglePassword" 
+                                                        style="cursor: pointer"></i>
+                                                        </span>
+
+                                        </div>
+                                        {%endif%}
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                                <div class="form-outline form-white mb-4">
+                                    {{form.Regis_submit_Sign_up(class="btn btn-outline-light btn-lg px-5", type="submit")}}
+
+
+
+
+
+                                    <div>
+                                        <p class="mb-0 mt-4">Already have an account? <a href="{{url_for('login')}}" class="text-white-50 fw-bold">Log in</a>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+</section>
+
+{% endblock %}
