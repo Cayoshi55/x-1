@@ -20,6 +20,8 @@ import fu_Mysql
 import class_User
 import class_form_index
 import Bot_spot_1
+import mybioneway11
+
 
 app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = 'mykeysss'
@@ -367,6 +369,19 @@ def Cayoshibot():
         Bot_spot_1.CayoshiM()
 
     return ""
+
+
+@app.route('/mybotnaja', methods=['POST', 'GET'])
+def mybotnaja():
+    if request.method == "POST":
+        mybioneway11.mywebhook()
+    return ""
+
+
+@app.route('/status')
+def status():
+    webmessage = "on"
+    return webmessage
 
 
 if __name__ == '__main__':
