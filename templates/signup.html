@@ -29,12 +29,24 @@
                                         Enter UserID
                                     </div>
 
-                                    {% else %} {{form.Regis_UserID(class="form-control form-control-lg",placeholder="User ID")}} {%endif%}
+                                    {% elif name == "user_already" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID")}}
+                                    <div class="invalid-feedback">
+                                        This username already exists.
+                                    </div>
+
+
+                                    {%else%} {{form.Regis_UserID(class="form-control form-control-lg",placeholder="User ID")}} {%endif%}
+
+
                                 </div>
                                 <div class="form-outline form-white mb-4">
                                     {% if email == "" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",placeholder="Email")}}
                                     <div class="invalid-feedback">
                                         Enter Email
+                                    </div>
+                                    {% elif email == "Email_already" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",placeholder="Email")}}
+                                    <div class="invalid-feedback">
+                                        This Email already exists.
                                     </div>
 
                                     {% else %} {{form.Regis_UserEmail(class="form-control form-control-lg",placeholder="Email")}} {%endif%}

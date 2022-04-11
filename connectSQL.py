@@ -129,24 +129,41 @@ def singup():
     Pass_login = form.Regis_User_Password.data
     Retypepass = form.Retype_password.data
     countPass = 0
-    print(countPass)
-    print(Retypepass)
+
     if request.method == "POST":
-        if Pass_login != "" and Pass_login != None:
+        data = fu_Mysql.User_select_login("nateeron", "")
+        user_indata = data[0][1]
+        email_data = data[0][2]
+        print(type(email))
+        print(Pass_login)
+
+        print(Pass_login)
+        if Pass_login:  # != "" and Pass_login != None:
             countPass = len(Pass_login)
 
             if countPass < 5:
                 Pass_login = "len5"
         if Pass_login == Retypepass:
             hashed_Str = ""
-            if User_login != "" and email != "" and Pass_login != "" and Retypepass != "":
+            if User_login and email and Pass_login and Retypepass:
                 # if request.method == "POST":
                 hashed = bcrypt.hashpw(
                     Pass_login.encode("utf-8"), bcrypt.gensalt())
                 hashed_Str = hashed.decode("utf-8")
-
-                fu_Mysql.User_create(User_login, email, hashed_Str)
-                return redirect("/login")
+                if user_indata == User_login:
+                    User_login = "user_already"
+                    print("********* This username already exists. ********")
+                    render_template("signup.html", form=form, name=User_login,
+                                    email=email, passlogin=Pass_login, Retype_password=Retypepass)
+                elif email_data == email:
+                    email = "Email_already"
+                    print("********* This Email already exists. ********")
+                    render_template("signup.html", form=form, name=User_login,
+                                    email=email, passlogin=Pass_login, Retype_password=Retypepass)
+                else:
+                    fu_Mysql.User_create(User_login, email, hashed_Str)
+                    print("*********OK*********")
+                    return redirect("/login")
         else:
             if Pass_login != "len5":
                 Retypepass = "dontmatch"
