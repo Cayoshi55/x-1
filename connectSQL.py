@@ -48,7 +48,7 @@ Session(app)
 def index():
 
     form = class_form_index.Myfromindex()
-
+    print(session["UserID"])
     if session["UserID"] == None or session["UserID"] == '':
 
         return redirect("/login")
