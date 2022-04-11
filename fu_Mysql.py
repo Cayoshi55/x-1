@@ -17,7 +17,7 @@ def User_select_login(userID, email):
         db = connect_mysql()
         cursor = db.cursor()
         sql = "call User_select('"+userID+"','"+email+"')"
-        print("[@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@]")
+
         print(sql)
         cursor.execute(sql)
         data = cursor.fetchall()

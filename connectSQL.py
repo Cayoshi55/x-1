@@ -120,6 +120,13 @@ def login():
     return render_template("login.html", form=form, name=User_login, passlogin=Pass_login)
 
 
+@app.route("/Dashboard", methods=["GET", "POST"])
+def Dashboard():
+    form = class_form_index
+    pass
+    return render_template("Dashboard.html", form=form)
+
+
 @app.route("/singup", methods=["GET", "POST"])
 def singup():
 

@@ -12,3 +12,7 @@ class Myfromindex(FlaskForm):
 class form_profile(FlaskForm):
     # Logout
     Logout = SubmitField("Log Out")
+
+
+class form_Dashboard(FlaskForm):
+    Logout = SubmitField("Log Out")
