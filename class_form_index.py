@@ -31,3 +31,12 @@ class form_Dashboard(FlaskForm):
 
     pause = SubmitField("Yes")
     pass_action = TelField(name="pass_action")
+    api_update = SubmitField("UPDATE")
+
+    set_txt1 = TelField("set_txt1")
+    set_txt2 = TelField("set_txt2")
+    set_txt3 = TelField("set_txt3")
+    set_txt4 = TelField("set_txt4")
+    set_txt5 = TelField("set_txt5")
+    set_txt6 = TelField("set_txt6")
+    set_txt7 = TelField("set_txt7")

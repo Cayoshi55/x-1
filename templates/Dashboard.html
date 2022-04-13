@@ -11,19 +11,87 @@
 </script>
 
 <script type="text/javascript">
+    var id = ""
     function reply_click(clicked_id) {
-
+        
         document.getElementById("pass_action").value = clicked_id;
+        var str_ID = clicked_id.replace("detail_Bot_","")
+        id = str_ID
+        console.log(str_ID+"_Label_API")
+        document.getElementById("set_txt1").value = document.getElementById(str_ID+"_Label_API").value
+        document.getElementById("set_txt2").value = document.getElementById(str_ID+"_API_Key").value
+        document.getElementById("set_txt3").value = document.getElementById(str_ID+"_API_SECRET").value
+        document.getElementById("set_txt4").value = document.getElementById(str_ID+"_LineNotify").value
+        document.getElementById("set_txt5").value = document.getElementById(str_ID+"_PassPhrase").value
+   
 
+        document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+
+      
     }
+
+     
+
+
+    function add_text(ids){ 
+    
+        
+        var id = ids.split("_")[0]
+    
+        var txt =document.getElementById(ids).value;
+      
+        var para = 'input[name="'+id+'_MarginType"]:checked'
+        
+        var para2 = 'input[name="'+id+'_ReOpenOrder"]:checked'
+
+
+      
+        var radio = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        var radio2 = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+        if (ids == id+"_Label_API"){
+            document.getElementById("set_txt1").value = txt
+        }
+        if (ids == id+"_API_Key"){
+            document.getElementById("set_txt2").value = txt
+        }
+        if (ids == id+"_API_SECRET"){   
+            document.getElementById("set_txt3").value = txt
+        }
+        if (ids == id+"_LineNotify"){
+            document.getElementById("set_txt4").value = txt
+        }
+        if (ids == id+"_PassPhrase"){
+            document.getElementById("set_txt5").value = txt
+        }
+        if (ids == id+"_MarginType"){
+            document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        }
+        if (ids == id+"_ReOpenOrder"){
+            document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+        }
+    }  
+   
 </script>
 
 <main class="content">
     <form method="POST">
-
+       <input class="form-control" id="Label_API10" name="Label_API10" type="tel" value="hhkkkkkkkvaluekkkvaluekkkkkkkkkk">
         <div class="container-fluid p-0">
             {{form.pass_action(class="visually-hidden-focusable",id="pass_action",value="p")}}
-            <div class="card ">
+            
+            
+            {{form.set_txt1(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt2(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt3(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt4(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt5(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt6(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt7(class="visually-hidden-focusable",value="x")}}
+           
+           
+           
+           <div class="card ">
                 <div class="card-header">
                     <h5 class="card-title mb-0">List Alert</h5>
                 </div>
@@ -150,20 +218,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <script>
-                                var myModal = document.getElementById('myModal')
-                                var myInput = document.getElementById('myInput')
 
-                                myModal.addEventListener('shown.bs.modal', function() {
-                                    myInput.focus()
-                                })
-                            </script> -->
                             <script>
                                 var exampleModal = document.getElementById('pause_bot_Modal')
                                 exampleModal.addEventListener('show.bs.modal', function(event) {
                                     var button = event.relatedTarget
                                     var mess_title = button.getAttribute('data-bs-mess_title')
                                     var mess_body = button.getAttribute('data-bs-mess_body')
+                                
+
                                     var modalTitle = exampleModal.querySelector('#pause_bot_Label')
                                     var modalBodyInput = exampleModal.querySelector('#message_txt')
 

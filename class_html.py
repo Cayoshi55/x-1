@@ -108,24 +108,31 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
 
     id = ""
     id = str(id_bot)
+    idx = id+"_"
     type_ = str(type_bot)
 
     if MarginType == "ISOLATED":
-        MarginType_ = """<ul id="MarginType"><li><input id="MarginType-0" name="MarginType" type="radio" value="ISOLATED" checked> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name="MarginType" type="radio" value="CROSSED"> <label for="MarginType-1">CROSSED</label></li></ul>"""
+        MarginType_ = """<ul onChange="add_text(this.id)" id="""+idx+"""MarginType><li><input id="MarginType-0" name="""+idx+"""MarginType type="radio" value="ISOLATED" checked> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name=""" + \
+            idx+"""MarginType type="radio" value="CROSSED"> <label for="MarginType-1">CROSSED</label></li></ul>"""
     elif MarginType == "CROSSED":
-        MarginType_ = """<ul id="MarginType"><li><input id="MarginType-0" name="MarginType" type="radio" value="ISOLATED"> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name="MarginType" type="radio" value="CROSSED" checked> <label for="MarginType-1">CROSSED</label></li></ul>"""
+        MarginType_ = """<ul onChange="add_text(this.id)" id="""+idx+"""MarginType><li><input id="MarginType-0" name="""+idx+"""MarginType type="radio" value="ISOLATED"> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name=""" + \
+            idx+"""MarginType type="radio" value="CROSSED" checked> <label for="MarginType-1">CROSSED</label></li></ul>"""
 
     else:
-        MarginType_ = """<ul id="MarginType"><li><input id="MarginType-0" name="MarginType" type="radio" value="ISOLATED"> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name="MarginType" type="radio" value="CROSSED"> <label for="MarginType-1">CROSSED</label></li></ul>"""
+        MarginType_ = """<ul onChange="add_text(this.id)" id="""+idx+"""MarginType><li><input id="MarginType-0" name="""+idx+"""MarginType type="radio" value="ISOLATED"> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name=""" + \
+            idx+"""MarginType type="radio" value="CROSSED"> <label for="MarginType-1">CROSSED</label></li></ul>"""
 
     if ReOpenOrder == "ON":
 
-        ReOpenOrder_ = """<ul id="ReOpenOrder"><li><input id="ReOpenOrder-0" name="ReOpenOrder" type="radio" value="ON" checked> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name="ReOpenOrder" type="radio" value="OFF"> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
+        ReOpenOrder_ = """<ul onChange="add_text(this.id)" id="""+idx+"""ReOpenOrder ><li><input id="ReOpenOrder-0" name="""+idx+"""ReOpenOrder type="radio" value="ON" checked> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name=""" + \
+            idx+"""ReOpenOrder type="radio" value="OFF"> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
     elif ReOpenOrder == "OFF":
-        ReOpenOrder_ = """<ul id="ReOpenOrder"><li><input id="ReOpenOrder-0" name="ReOpenOrder" type="radio" value="ON"> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name="ReOpenOrder" type="radio" value="OFF" checked> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
+        ReOpenOrder_ = """<ul onChange="add_text(this.id)" id="""+idx+"""ReOpenOrder ><li><input id="ReOpenOrder-0" name="""+idx+"""ReOpenOrder  type="radio" value="ON"> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name=""" + \
+            idx+"""ReOpenOrder type="radio" value="OFF" checked> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
 
     else:
-        ReOpenOrder_ = """<ul id="ReOpenOrder"><li><input id="ReOpenOrder-0" name="ReOpenOrder" type="radio" value="ON"> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name="ReOpenOrder" type="radio" value="OFF"> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
+        ReOpenOrder_ = """<ul onChange="add_text(this.id)" id="""+idx+"""ReOpenOrder><li><input id="ReOpenOrder-0" name="""+idx+"""ReOpenOrder type="radio"  value="ON"> <label for="ReOpenOrder-0">ON</label></li><li><input id="ReOpenOrder-1" name=""" + \
+            idx+"""ReOpenOrder  type="radio" value="OFF"> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
 
     if type_ == "Future":
         future_option = """ <div class="input-group m-2">
@@ -134,9 +141,6 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                             <div class="col">
                                                                 MarginType 
                                                                 """+MarginType_+"""
-                                                                
-                                                                
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -145,7 +149,6 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                             <div class="col">
                                                                 ReOpenOrder 
                                                                  """+ReOpenOrder_+"""
-                                                               
                                                             </div>
                                                         </div>
                                                     </div>
@@ -166,26 +169,26 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                 """+future_option+"""
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="Label_API" name="Label_API" type="tel" value='"""+str(Label_API)+"""' > 
+                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" onChange="add_text(this.id)" value='"""+str(Label_API)+"""' > 
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="API_Key" name="API_Key" type="tel" value="""+API_Key+"""> 
+                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" onChange="add_text(this.id)" value="""+API_Key+"""> 
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="API_SECRET" name="API_SECRET" type="tel" value="""+API_SECRET+"""> 
+                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" onChange="add_text(this.id)" type="tel" value="""+API_SECRET+"""> 
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="LineNotify" name="LineNotify" type="tel" value="""+LineNotify+"""> 
+                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" onChange="add_text(this.id)" type="tel" value="""+LineNotify+"""> 
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="PassPhrase" name="PassPhrase" type="tel" value="""+PassPhrase+"""> 
+                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" onChange="add_text(this.id)" type="tel" value="""+PassPhrase+"""> 
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Update</button>
+                                            <input class="btn btn-primary" id="api_update" name="api_update" type="submit" value="api_update">
                                         </div>
                                     </div>
                                 </div>

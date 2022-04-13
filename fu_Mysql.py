@@ -179,14 +179,15 @@ def API_insert(user_id,  apikey,  apisecret,  linetoken_1, passphrase, margintyp
         db.close()
 
 
-def API_Update(label_api, apisecret, linetoken_1, passphrase, margintype, reopenorder):
+def API_Update(id, label_api, apikey, apisecret, linetoken_1, passphrase, margintype, reopenorder):
     try:
         db = connect_mysql()
         cursor = db.cursor()
-        arr = [label_api, apisecret, linetoken_1,
+        arr = [id, label_api, apikey, apisecret, linetoken_1,
                passphrase, margintype, reopenorder]
         sql = " call API_update('"+str(arr[0]) + "' ,'" + str(arr[1])+"' ,'" + str(
-            arr[2])+"' ,'" + str(arr[3])+"' ,'" + str(arr[4]) + "' ,'"+str(arr[5])+"')"
+            arr[2])+"' ,'" + str(arr[3])+"' ,'" + str(arr[4]) + "' ,'"+str(arr[5])+"','"+str(arr[6])+"','"+str(arr[7])+"')"
+        print("***********[ API_Update ]************")
         print(sql)
 
         cursor.execute(sql)

@@ -49,11 +49,9 @@ Session(app)
 #############################################################################################################
 def check_UserID():
 
-    print("*****check_UserID********")
     try:
 
         if session["UserID"] == None or session["UserID"] == '':
-            print("UserID = None , UserID= ''")
 
             return True
     except:
@@ -80,7 +78,7 @@ def index():
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
 
-    session["UserID"] = ""
+    session.clear()
 
     return redirect("/login")
 
@@ -88,9 +86,6 @@ def logout():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = class_User.MyfromLogin()
-    print("@@@@@@*********session**********@@@@@@@@")
-    # print(session)
-    # if request.method == "POST":
     User_login = form.UserID.data
     Pass_login = form.User_Password.data
 
@@ -107,7 +102,7 @@ def login():
 
             try:
                 user_indata = data[0][1]
-                print(Pass_login)
+
                 try:
                     pass_indata = data[0][3]
 
@@ -140,6 +135,10 @@ def login():
 @app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
 
+    if session["test"] == None:
+        session["test"] = ""
+    print("***********session['5session']************")
+    print(session["test"])
     form = class_form_index.form_Dashboard()
     if check_UserID():
         return redirect("/login")
@@ -148,21 +147,20 @@ def Dashboard():
     u_id = session["UserID"]
 
     data = fu_Mysql.API_select(u_id, "")
-    print(data)
+
     htmls = ""
     html_m = ""
 
     session["ch_api"] = ""
     delete = form.delete.data
-    pause = form.pause.id
+    pause = form.pause.data
+    api_update = form.api_update.data
     Create_API = form.Create_API.data
     pass_action = form.pass_action.data
 
     if request.method == "POST":
 
         if pause:
-            print("######[ button Pause ]######")
-            print(pause)
             if pass_action.split("_")[0] == "pause":
                 id_ = pass_action.replace("pause_bot_", "")
                 fu_Mysql.API_PauseOrRun(id_, "run")
@@ -172,10 +170,22 @@ def Dashboard():
             return redirect("/Dashboard")
 
         if delete:
-            print(pass_action)
             id_ = pass_action.replace("delete_bot_", "")
-
             fu_Mysql.API_Delete(id_)
+            return redirect("/Dashboard")
+
+        if api_update:
+            id = pass_action.replace("detail_Bot_", "")
+            Label_API = form.set_txt1.data
+            API_Key = form.set_txt2.data
+            API_SECRET = form.set_txt3.data
+            LineNotify = form.set_txt4.data
+            PassPhrase = form.set_txt5.data
+            MarginType = form.set_txt6.data
+            ReOpenOrder = form.set_txt7.data
+
+            fu_Mysql.API_Update(id, Label_API, API_Key, API_SECRET, LineNotify,
+                                PassPhrase, MarginType, ReOpenOrder)
             return redirect("/Dashboard")
 
         if Create_API:
@@ -199,9 +209,9 @@ def Dashboard():
                                     MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
                 return redirect("/Dashboard")
     if data != []:
-        session["Data_Detail"] = data
+
         for x in data:
-            print(x[10])
+
             htmls += class_html.html_isbot(x[0], x[11], x[9], x[10], x[12])
             html_m += class_html.html_modal(
                 x[0], x[11], x[6], x[7], x[10], x[2], x[3], x[4], x[5])
@@ -209,7 +219,10 @@ def Dashboard():
             session["html_modal"] = html_m
 
     else:
+        session["html_modal"] = ""
+        session["html_isbot"] = ""
         print("data : non")
+
     return render_template("Dashboard.html", form=form)
 
 
@@ -308,17 +321,10 @@ print("**********************************************************************")
 @app.route("/test", methods=["GET", "POST"])
 def test():
     form = class_User.ResetNewPassword()
-
-    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    # con = fu_Mysql.User_create("admin7", "nateeron8@gmail.com",
-    # "$2b$12$UrTBoRa1FlV5XWZVyHZUnO6M5myLdT.KBCJXgVYy2cnEE87k6/mka")
-    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return render_template("send_resetPass.html", form=form)
 
-    # return redirect(url_for('reset_new_password'))
+
 ##################[ Send Mail ]###############
-
-
 def send_mail(Email_user):
     token = password_reset_token(Email_user)
 
@@ -326,8 +332,6 @@ def send_mail(Email_user):
     print([app.config['MAIL_USERNAME']])
     print([Email_user])
 
-    #html = forms.Html_send_resetPassword(token)
-    # print(html)
     with app.app_context():
         msg = Message(subject='Password Reset Request',
                       recipients=['nateeronron@gmail.com'], sender='botteadingview@gmail.com')
@@ -340,14 +344,10 @@ def send_mail(Email_user):
                     '''
         msg.html = '<a href="http://192.168.43.94:5000/reset_new_password/' + \
             token.decode("utf-8")+'">Reset You password</a>'
-        # msg.html = (
-        # u'<a href="{{url_for(''reset_new_password'')}}">abc</a>', 'html')
+
         mail.send(msg)
 
-#_external = True
     return "send_success"
-#############################################
-# # type="submit"
 
 
 @ app.route("/resetpass", methods=["GET", "POST"])
@@ -396,25 +396,14 @@ def reset_new_password(token):
             pass_Chang = str(form.Npassword.data)
             newPass = str(form.Confirm_password.data)
             if newPass == pass_Chang:
-
-                print("********** 1 **************")
                 newPass = str(form.Confirm_password.data)
-                print("********** 2 **************")
                 # เวลาเซฟ
                 hashed = bcrypt.hashpw(
                     newPass.encode("utf-8"), bcrypt.gensalt())
-                print("********** 3 **************")
                 hashed_Str = (hashed).decode("utf-8")
-                print("********** 4 **************")
-                print(str(chacks.decode("utf-8")))
                 email = str(chacks.decode("utf-8"))
-
                 fu_Mysql.User_Update("", email,  "", "", hashed_Str)
-
-                #flash('Password chang! Please Login', 'success')
-                print("********** 5 **************")
                 return render_template("reset_new_password.html", form=form, check_password=check)
-
             else:
                 check = "dontmatch"
     except:
@@ -443,36 +432,6 @@ def profile():
 
     return render_template("pages-profile.html", form=form)
 
-
-################################################################################################################################################################################################################################################
-################################################################################################################################################################################################################################################
-
-
-@ app.route('/pass')
-def hello_world():
-    passwordb = b"Pass1234"
-    password = "Pass1234"
-    # เวลาเซฟ
-    hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-    # username = request.form.get("username") # or email
-    # passwords = request.form.get(password).encode("utf-8")
-    passwords = (password).encode("utf-8")
-    # เช็กระหัส
-    print(passwords)
-    print(hashed)
-    if bcrypt.checkpw(passwords, hashed):
-        # return "<h1>ChackPass</h1><br><h2>Wellcom"+password+"</h2>"
-        print(fungtion_Binace.cal_1())
-        return "<h1>ChackPass</h1><br><h2>Wellcom "+fungtion_Binace.cal_1()+"</h2>"
-
-    else:
-
-        return "<h1>ChackPass</h1><br><h2>Didn't match Pass </h2>"
-
-
-@ app.route('/admin')
-def admin():
-    return "Admin"
 
 # --------------Bot Spot---------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@-------------------------------------
 
