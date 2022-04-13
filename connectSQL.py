@@ -135,10 +135,6 @@ def login():
 @app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
 
-    if session["test"] == None:
-        session["test"] = ""
-    print("***********session['5session']************")
-    print(session["test"])
     form = class_form_index.form_Dashboard()
     if check_UserID():
         return redirect("/login")
