@@ -1,7 +1,10 @@
 
-
+from datetime import timedelta
+from distutils.errors import PreprocessError
+from operator import truediv
 import os
 import string
+from tkinter.tix import Tree
 from itsdangerous import TimedSerializer, TimestampSigner
 # from distutils.text_file import TextFile
 from wsgiref.validate import validator
@@ -21,13 +24,14 @@ import class_User
 import class_form_index
 import Bot_spot_1
 import mybioneway11
-
+import class_html
 
 app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = 'mykeysss'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-
+# 60*24 = 1,440
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=1440)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # 'localhost'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -35,6 +39,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'botteadingview@gmail.com'
 app.config['MAIL_PASSWORD'] = 'Z533op/*-'
 app.config['MAIL_DEFAULT_SENDER'] = 'botteadingview@gmail.com'
+
 mail = Mail(app)
 Session(app)
 
@@ -42,22 +47,29 @@ Session(app)
 #############################################################################################################
 # เข้าหน้าหลัก ถ้าไม่เจอชื่อ  session["UserID"] == "" ให้ไปหน้า Login
 #############################################################################################################
+def check_UserID():
+
+    print("*****check_UserID********")
+    try:
+
+        if session["UserID"] == None or session["UserID"] == '':
+            print("UserID = None , UserID= ''")
+
+            return True
+    except:
+        print("UserID = error")
+        session["UserID"] = ""
+        return True
 
 
 @app.route("/", methods=["POST", "GET"])
 def index():
 
     form = class_form_index.Myfromindex()
-    print(session["UserID"])
-    if session["UserID"] == None or session["UserID"] == '':
 
+    if check_UserID():
         return redirect("/login")
 
-    if request.method == "POST" and session["UserID"] != '':
-
-        logout = form.Logout.check_validators()
-        print(logout)
-        print(request.method)
     return render_template('index.html', form=form)
 
 #############################################################################################################
@@ -76,20 +88,23 @@ def logout():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = class_User.MyfromLogin()
-
+    print("@@@@@@*********session**********@@@@@@@@")
+    # print(session)
     # if request.method == "POST":
     User_login = form.UserID.data
     Pass_login = form.User_Password.data
-    print(form.UserID.data)
-    if session["UserID"]:
-        return redirect("/")
+
+    try:
+        if session["UserID"]:
+            return redirect("/")
+    except:
+        pass
+
     if request.method == "POST":
-        print("USREID//////////////////////////////////////////////////")
-        print(User_login)
+
         if User_login != "":
             data = fu_Mysql.User_select_login(User_login, User_login)
-            print("print(data)")
-            print(data)
+
             try:
                 user_indata = data[0][1]
                 print(Pass_login)
@@ -101,6 +116,8 @@ def login():
                         print("OK")
                         # ตัวเช็ก การเข้าใช้อยู่มั้ย
                         session["UserID"] = form.UserID.data
+                        session.permanent = True
+
                         session["is_math_Password"] = ""
                         return redirect("/")
                     else:
@@ -122,8 +139,77 @@ def login():
 
 @app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
-    form = class_form_index
-    pass
+
+    form = class_form_index.form_Dashboard()
+    if check_UserID():
+        return redirect("/login")
+
+    session['playlist_id'] = ""
+    u_id = session["UserID"]
+
+    data = fu_Mysql.API_select(u_id, "")
+    print(data)
+    htmls = ""
+    html_m = ""
+
+    session["ch_api"] = ""
+    delete = form.delete.data
+    pause = form.pause.id
+    Create_API = form.Create_API.data
+    pass_action = form.pass_action.data
+
+    if request.method == "POST":
+
+        if pause:
+            print("######[ button Pause ]######")
+            print(pause)
+            if pass_action.split("_")[0] == "pause":
+                id_ = pass_action.replace("pause_bot_", "")
+                fu_Mysql.API_PauseOrRun(id_, "run")
+            else:
+                id_ = pass_action.replace("running_bot_", "")
+                fu_Mysql.API_PauseOrRun(id_, "stop")
+            return redirect("/Dashboard")
+
+        if delete:
+            print(pass_action)
+            id_ = pass_action.replace("delete_bot_", "")
+
+            fu_Mysql.API_Delete(id_)
+            return redirect("/Dashboard")
+
+        if Create_API:
+
+            bot_type = form.to0X8sp765598as00zo23.data
+            Label_API = form.Label_API.data
+            API_Key = form.API_Key.data
+            API_SECRET = form.API_SECRET.data
+            LineNotify = form.LineNotify.data
+            PassPhrase = form.PassPhrase.data
+            MarginType = form.MarginType.data
+            ReOpenOrder = form.ReOpenOrder.data
+
+            check_apikey = fu_Mysql.API_select("", API_Key)
+            if check_apikey != []:
+                session["ch_api"] = "have"
+                print(session["ch_api"])
+            else:
+
+                fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
+                                    MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
+                return redirect("/Dashboard")
+    if data != []:
+        session["Data_Detail"] = data
+        for x in data:
+            print(x[10])
+            htmls += class_html.html_isbot(x[0], x[11], x[9], x[10], x[12])
+            html_m += class_html.html_modal(
+                x[0], x[11], x[6], x[7], x[10], x[2], x[3], x[4], x[5])
+            session["html_isbot"] = htmls
+            session["html_modal"] = html_m
+
+    else:
+        print("data : non")
     return render_template("Dashboard.html", form=form)
 
 
@@ -349,6 +435,10 @@ def Tokens_expire():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+
+    if check_UserID():  # session["UserID"] == None or session["UserID"] == '':
+
+        return redirect("/login")
     form = class_form_index.form_profile()
 
     return render_template("pages-profile.html", form=form)
@@ -406,6 +496,12 @@ def mybotnaja():
 def status():
     webmessage = "on"
     return webmessage
+
+
+@app.errorhandler(404)
+def page_not_dound(e):
+    session['404'] = e
+    return render_template("404.html")
 
 
 if __name__ == '__main__':
