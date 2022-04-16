@@ -71,28 +71,12 @@ def User_Update(where_uid, where_email, userID, email, Pass):
 
 def create_Setting_BOT(userID, email, Pass,):
 
-    db = connect_mysql()
-    cursor = db.cursor()
-
-    sql = "INSERT INTO Save_Code( Keyword, Code, type) VALUES (@_Word,@_Meaning,@_comboType)"
-    cursor.execute(sql)
-    data = cursor.fetchall()
-    print(data)
-
-    return data
+    return ""
 
 
 def update_Setting_BOT(userID, email, Pass,):
 
-    db = connect_mysql()
-    cursor = db.cursor()
-
-    sql = "INSERT INTO Save_Code( Keyword, Code, type) VALUES (@_Word,@_Meaning,@_comboType)"
-    cursor.execute(sql)
-    data = cursor.fetchall()
-    print(data)
-
-    return data
+    return ""
 
 
 ################################
@@ -100,12 +84,14 @@ def update_Setting_BOT(userID, email, Pass,):
 ################################
 
 
-def Alert_select(userID, email):
+def Alert_select(user_id, label_api, symbol, date_timeA, bot_type):
     try:
         db = connect_mysql()
         cursor = db.cursor()
-        sql = "call User_select('"+userID+"','"+email+"')"
-        print("[@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@]")
+        arr = [user_id, label_api, symbol, date_timeA, bot_type]
+        sql = "call Alert_select('"+str(arr[0]) + "' ,'" + str(arr[1])+"' ,'" + str(
+            arr[2])+"' ,'" + str(arr[3])+"' ,'" + str(arr[4]) + "')"
+
         print(sql)
         cursor.execute(sql)
         data = cursor.fetchall()
@@ -119,12 +105,15 @@ def Alert_select(userID, email):
         db.close()
 
 
-def Alert_insert(User_id, User_Email, User_Pass):
+def Alert_insert(user_id, apikey, botAction, price, side, amount, symbol, passphrase, strategy_name):
     try:
         db = connect_mysql()
         cursor = db.cursor()
-        sql = "call User_Create('"+User_id + \
-            "', '" + User_Email+"' ,'"+User_Pass+"')"
+        arr = [user_id, apikey, botAction, price, side,
+               amount, symbol, passphrase, strategy_name]
+        sql = "call Alert_insert('"+str(arr[0]) + "' ,'" + str(arr[1])+"' ,'" + str(arr[2])+"' ,'" + str(arr[3])+"' ,'" + str(arr[4]) + "' ,'"+str(
+            arr[5])+"' ,'"+str(arr[6]) + "' ,'"+str(arr[7])+"' ,'" + str(arr[8]) + "' )'"
+        print(sql)
         cursor.execute(sql)
         db.commit()
 

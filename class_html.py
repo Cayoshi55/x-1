@@ -28,13 +28,13 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
                                                 <div class="text-success">
 
                                                     Long alert: 59
-                                                    Close Long : 59 
+                                                    Close Long : 59
                                                 </div>
 
                                                 <div class="text-danger">
 
-                                                    Short alert: 58 
-                                                    Close Short : 58 
+                                                    Short alert: 58
+                                                    Close Short : 58
                                                 </div>
 
                                                 <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
@@ -139,7 +139,7 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                     <div class="col">
                                                         <div class="row">
                                                             <div class="col">
-                                                                MarginType 
+                                                                MarginType
                                                                 """+MarginType_+"""
                                                             </div>
                                                         </div>
@@ -147,7 +147,7 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                     <div class="col">
                                                         <div class="row">
                                                             <div class="col">
-                                                                ReOpenOrder 
+                                                                ReOpenOrder
                                                                  """+ReOpenOrder_+"""
                                                             </div>
                                                         </div>
@@ -164,24 +164,24 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            
+
                                             <form>
                                                 """+future_option+"""
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" onChange="add_text(this.id)" value='"""+str(Label_API)+"""' > 
+                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" onChange="add_text(this.id)" value='"""+str(Label_API)+"""' >
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" onChange="add_text(this.id)" value="""+API_Key+"""> 
+                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" onChange="add_text(this.id)" value="""+API_Key+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" onChange="add_text(this.id)" type="tel" value="""+API_SECRET+"""> 
+                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" onChange="add_text(this.id)" type="tel" value="""+API_SECRET+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" onChange="add_text(this.id)" type="tel" value="""+LineNotify+"""> 
+                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" onChange="add_text(this.id)" type="tel" value="""+LineNotify+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" onChange="add_text(this.id)" type="tel" value="""+PassPhrase+"""> 
+                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" onChange="add_text(this.id)" type="tel" value="""+PassPhrase+""">
                                                     </div>
                                                 </div>
                                             </form>
@@ -195,3 +195,22 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                             </div>"""
 
     return html_modal
+
+
+def html_alert(date_timeA, label_api, bot_type, symbol, side, price, Quantity, amount, passphrase, strategy_name):
+
+    htmls = """<tr>
+                            <th class="d-none d-md-table-cell">"""+str(date_timeA)+"""</th>
+                            <td class="d-none d-xl-table-cell">"""+str(label_api)+"""</td>
+                            <td class="d-none d-xl-table-cell">"""+str(bot_type)+"""</td>
+                            <th>"""+str(symbol)+"""</th>
+                            <td><span class="alert-success">"""+str(side)+"""</span></td>
+                            <td>"""+str(price)+"""</td>
+                            <td class="d-none d-md-table-cell">"""+str(Quantity)+"""</td>
+                            <td>"""+str(amount)+"""</td>
+                            <td class="d-none d-md-table-cell">"""+str(passphrase)+"""</td>
+                            <td class="d-none d-md-table-cell">"""+str(strategy_name)+"""</td>
+
+                        </tr>"""
+
+    return htmls

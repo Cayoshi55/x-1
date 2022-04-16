@@ -1,0 +1,18 @@
+
+
+
+# coding=utf-8 
+import os 
+ 
+print("OS home directory " , os.getenv("HOME")) 
+os.chdir(os.getenv("HOME")) 
+print("Current Working Directory " , os.getcwd()) 
+ 
+if os.path.exists(".REQUIRED_PATH") : 
+    # Change the current working Directory     
+    os.chdir(".REQUIRED_PATH") 
+ 
+else: 
+    print("Can't change the Current Working Directory")    
+     
+print("Current Working Directory " , os.getcwd()) 

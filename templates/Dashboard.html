@@ -12,12 +12,14 @@
 
 <script type="text/javascript">
     var id = ""
+    //เช็กปุ่มว่า กดจากปุ่มไหน ให้ส่ง id ปุ่มเข้ามา ใช้กับ แถบบอท
     function reply_click(clicked_id) {
         
         document.getElementById("pass_action").value = clicked_id;
         var str_ID = clicked_id.replace("detail_Bot_","")
         id = str_ID
         console.log(str_ID+"_Label_API")
+        // document.getElementById("set_txt1").value >>> เป็นตัวส่งข้อความไปฝั่ง PY = document.getElementById(str_ID+"_Label_API").value >>> เป็นตัวโยนค่าจาก HTML ไปให้ form 
         document.getElementById("set_txt1").value = document.getElementById(str_ID+"_Label_API").value
         document.getElementById("set_txt2").value = document.getElementById(str_ID+"_API_Key").value
         document.getElementById("set_txt3").value = document.getElementById(str_ID+"_API_SECRET").value
@@ -35,7 +37,7 @@
 
 
     function add_text(ids){ 
-    
+    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
         
         var id = ids.split("_")[0]
     
@@ -97,70 +99,23 @@
                 <table class="table table-hover my-0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th class="d-none d-xl-table-cell">Start Date</th>
-                            <th class="d-none d-xl-table-cell">End Date</th>
-                            <th>Status</th>
-                            <th class="d-none d-md-table-cell">Assignee</th>
+                            <th class="d-none d-md-table-cell">Date Time</th>
+                            <th class="d-none d-xl-table-cell">label</th>
+                            <th class="d-none d-xl-table-cell">Bot</th>
+                            <th>Symbol</th>
+                            <th>Action</th>
+                            
+                            <th>Price</th>
+                            <th class="d-none d-md-table-cell">Quantity</th>
+                            <th>Amount</th>
+                            <th class="d-none d-md-table-cell">Passphrase</th>
+                            <th class="d-none d-md-table-cell">strategy_name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Project Apollo</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                        </tr>
-                        <tr>
-                            <td>Project Fireball</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-danger">Cancelled</span></td>
-                            <td class="d-none d-md-table-cell">William Harris</td>
-                        </tr>
-                        <tr>
-                            <td>Project Hades</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                        </tr>
-                        <tr>
-                            <td>Project Nitro</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-warning">In progress</span></td>
-                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                        </tr>
-                        <tr>
-                            <td>Project Phoenix</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                            <td class="d-none d-md-table-cell">William Harris</td>
-                        </tr>
-                        <tr>
-                            <td>Project X</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                        </tr>
-                        <tr>
-                            <td>Project Romeo</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                            <td class="d-none d-md-table-cell">Christina Mason</td>
-                        </tr>
-                        <tr>
-                            <td>Project Wombat</td>
-                            <td class="d-none d-xl-table-cell">01/01/2021</td>
-                            <td class="d-none d-xl-table-cell">31/06/2021</td>
-                            <td><span class="badge bg-warning">In progress</span></td>
-                            <td class="d-none d-md-table-cell">William Harris</td>
-                        </tr>
+                       {{session["html_Alert"]| safe}}
+
+                        
                     </tbody>
                 </table>
 

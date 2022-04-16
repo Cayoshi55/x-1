@@ -30,7 +30,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = 'mykeysss'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-# 60*24 = 1,440
+# 60*24 = 1,440 จับเวลา Login 1วัน ให้เคลีย SESSION
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=1440)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # 'localhost'
 app.config['MAIL_PORT'] = 587
@@ -143,7 +143,7 @@ def Dashboard():
     u_id = session["UserID"]
 
     data = fu_Mysql.API_select(u_id, "")
-
+    data_alert = fu_Mysql.Alert_select(u_id, '', '', '', '')
     htmls = ""
     html_m = ""
 
@@ -204,6 +204,17 @@ def Dashboard():
                 fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
                                     MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
                 return redirect("/Dashboard")
+
+    if data_alert != []:
+        html_Alert = ""
+        for x in data_alert:
+
+            html_Alert += class_html.html_alert(
+                x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9])
+            print(html_Alert)
+            session["html_Alert"] = html_Alert
+    else:
+        session["html_Alert"] = ""
     if data != []:
 
         for x in data:
