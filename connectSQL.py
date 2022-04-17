@@ -1,11 +1,21 @@
-#๒ฟหกฟหกฟหกฟหก
-#asdasdsdfsdfsdf
+# ๒ฟหกฟหกฟหกฟหก
+
+# asdasdsdfsdfsdf
+
+# 99999999999999999999
+# 99999999999999999999
+# 99999999999999999999
+# 99999999999999999999
+
 from datetime import timedelta
 from distutils.errors import PreprocessError
 from operator import truediv
 import os
 import string
-#๒ฟหกฟหกฟหก
+# 99999999999999999999
+# 99999999999999999999
+# 99999999999999999999
+# ๒ฟหกฟหกฟหก
 from tkinter.tix import Tree
 from itsdangerous import TimedSerializer, TimestampSigner
 # from distutils.text_file import TextFile
@@ -15,7 +25,7 @@ import flask
 from flask_session import Session
 from flask_wtf import FlaskForm  # ซ่อมการทำงาน HTML
 from flask_mail import Mail, Message
-#dsfdsfsdfsdf
+# dsfdsfsdfsdf
 from wtforms import TextAreaField, TelField,  BooleanField, SubmitField, SelectField, SearchField, RadioField  # จัดการ HTML
 from wtforms.validators import DataRequired
 import mysql.connector
