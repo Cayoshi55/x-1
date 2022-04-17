@@ -1,9 +1,9 @@
 # TEST TEST TEST TEST TEST TEST TEST TEST TEST
 # แก้ไข2
 # แก้ไข3
-#555556sdf
+# 555556sdf
 # แก้ไข4
-#123222
+# 123222
 # แก้ไข5
 # แก้ไข6
 
@@ -51,10 +51,12 @@ app.config['MAIL_DEFAULT_SENDER'] = 'botteadingview@gmail.com'
 mail = Mail(app)
 Session(app)
 
-#sdfsfsdfsdfsdf
+# sdfsfsdfsdfsdf
 #############################################################################################################
 # เข้าหน้าหลัก ถ้าไม่เจอชื่อ  session["UserID"] == "" ให้ไปหน้า Login
 #############################################################################################################
+
+
 def check_UserID():
 
     try:
