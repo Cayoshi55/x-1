@@ -1,5 +1,10 @@
 # TEST TEST TEST TEST TEST TEST TEST TEST TEST
-#แก้ไข2
+# แก้ไข2
+# แก้ไข3
+# แก้ไข4
+# แก้ไข5
+# แก้ไข6
+
 from datetime import timedelta
 from distutils.errors import PreprocessError
 from operator import truediv
