@@ -1,5 +1,5 @@
 # TEST TEST TEST TEST TEST TEST TEST TEST TEST
-
+#แก้ไข2
 from datetime import timedelta
 from distutils.errors import PreprocessError
 from operator import truediv
