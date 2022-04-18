@@ -1,21 +1,10 @@
-# ๒ฟหกฟหกฟหกฟหก
-
-# asdasdsdfsdfsdf
-
-# 99999999999999999999
-# 99999999999999999999
-# 99999999999999999999
-# 99999999999999999999
 
 from datetime import timedelta
 from distutils.errors import PreprocessError
 from operator import truediv
 import os
 import string
-# 99999999999999999999
-# 99999999999999999999
-# 99999999999999999999
-# ๒ฟหกฟหกฟหก
+
 from tkinter.tix import Tree
 from itsdangerous import TimedSerializer, TimestampSigner
 # from distutils.text_file import TextFile
@@ -25,7 +14,7 @@ import flask
 from flask_session import Session
 from flask_wtf import FlaskForm  # ซ่อมการทำงาน HTML
 from flask_mail import Mail, Message
-# dsfdsfsdfsdf
+
 from wtforms import TextAreaField, TelField,  BooleanField, SubmitField, SelectField, SearchField, RadioField  # จัดการ HTML
 from wtforms.validators import DataRequired
 import mysql.connector
@@ -34,10 +23,16 @@ import fungtion_Binace
 import fu_Mysql
 import class_User
 import class_form_index
-import Bot_spot_1
+#import Bot_spot_1
+import Bot_Spot
 import mybioneway11
 import class_html
+import socket
+import sys
+import uuid
 
+
+#app = Flask(__name__, static_url_path='/static')
 app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = 'mykeysss'
 app.config["SESSION_PERMANENT"] = False
@@ -77,12 +72,10 @@ def check_UserID():
 @app.route("/", methods=["POST", "GET"])
 def index():
 
-    form = class_form_index.Myfromindex()
-
     if check_UserID():
         return redirect("/login")
 
-    return render_template('index.html', form=form)
+    return redirect("/Dashboard")
 
 #############################################################################################################
 # LOGIN
@@ -149,7 +142,12 @@ def login():
 @app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
 
-    form = class_form_index.form_Dashboard()
+    hostname = socket.gethostname()
+    ip = socket.gethostbyname(hostname)
+    print(hostname)
+    print(ip)
+
+    form_dashb = class_form_index.form_Dashboard()
     if check_UserID():
         return redirect("/login")
 
@@ -162,12 +160,13 @@ def Dashboard():
     html_m = ""
 
     session["ch_api"] = ""
-    delete = form.delete.data
-    pause = form.pause.data
-    api_update = form.api_update.data
-    Create_API = form.Create_API.data
-    pass_action = form.pass_action.data
+    delete = form_dashb.delete.data
+    pause = form_dashb.pause.data
 
+    Create_API = form_dashb.Create_API.data
+    pass_action = form_dashb.pass_action.data
+
+    send_post = form_dashb.send_post.data
     if request.method == "POST":
 
         if pause:
@@ -184,15 +183,20 @@ def Dashboard():
             fu_Mysql.API_Delete(id_)
             return redirect("/Dashboard")
 
-        if api_update:
+        if request.form.get('test_send') == "TEST SEND":
+
+            Bot_Spot.CayoshiM(send_post)
+            return redirect("/Dashboard")
+        if request.form.get('api_update') == "API UPDATE":
+
             id = pass_action.replace("detail_Bot_", "")
-            Label_API = form.set_txt1.data
-            API_Key = form.set_txt2.data
-            API_SECRET = form.set_txt3.data
-            LineNotify = form.set_txt4.data
-            PassPhrase = form.set_txt5.data
-            MarginType = form.set_txt6.data
-            ReOpenOrder = form.set_txt7.data
+            Label_API = form_dashb.set_txt1.data
+            API_Key = form_dashb.set_txt2.data
+            API_SECRET = form_dashb.set_txt3.data
+            LineNotify = form_dashb.set_txt4.data
+            PassPhrase = form_dashb.set_txt5.data
+            MarginType = form_dashb.set_txt6.data
+            ReOpenOrder = form_dashb.set_txt7.data
 
             fu_Mysql.API_Update(id, Label_API, API_Key, API_SECRET, LineNotify,
                                 PassPhrase, MarginType, ReOpenOrder)
@@ -200,19 +204,28 @@ def Dashboard():
 
         if Create_API:
 
-            bot_type = form.to0X8sp765598as00zo23.data
-            Label_API = form.Label_API.data
-            API_Key = form.API_Key.data
-            API_SECRET = form.API_SECRET.data
-            LineNotify = form.LineNotify.data
-            PassPhrase = form.PassPhrase.data
-            MarginType = form.MarginType.data
-            ReOpenOrder = form.ReOpenOrder.data
+            bot_type = form_dashb.to0X8sp765598as00zo23.data
+            Label_API = form_dashb.Label_API.data
+            API_Key = form_dashb.API_Key.data
+            API_SECRET = form_dashb.API_SECRET.data
+            LineNotify = form_dashb.LineNotify.data
+            #PassPhrase = form_dashb.PassPhrase.data
+            MarginType = form_dashb.MarginType.data
+            ReOpenOrder = form_dashb.ReOpenOrder.data
+
+            PassPhrase = uuid.uuid5(
+                uuid.NAMESPACE_DNS, session["UserID"]+bot_type)
+            print(PassPhrase)
+
+            # 894c8945-6079-57cf-a255-7566c9603a6e >> Spot
+            # 894c8945-6079-57cf-a255-7566c9603a6e >> Spot
+            # fc20cc82-5785-5f25-9e35-058f6085a2cd >> Future
+            # fc20cc82-5785-5f25-9e35-058f6085a2cd >> Future
 
             check_apikey = fu_Mysql.API_select("", API_Key)
             if check_apikey != []:
                 session["ch_api"] = "have"
-                print(session["ch_api"])
+
             else:
 
                 fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
@@ -225,7 +238,7 @@ def Dashboard():
 
             html_Alert += class_html.html_alert(
                 x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9])
-            print(html_Alert)
+
             session["html_Alert"] = html_Alert
     else:
         session["html_Alert"] = ""
@@ -244,7 +257,7 @@ def Dashboard():
         session["html_isbot"] = ""
         print("data : non")
 
-    return render_template("Dashboard.html", form=form)
+    return render_template("Dashboard.html", form=form_dashb)
 
 
 @app.route("/singup", methods=["GET", "POST"])
@@ -445,11 +458,9 @@ def Tokens_expire():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-
+    form = class_User.Profile()
     if check_UserID():  # session["UserID"] == None or session["UserID"] == '':
-
         return redirect("/login")
-    form = class_form_index.form_profile()
 
     return render_template("pages-profile.html", form=form)
 
@@ -457,10 +468,13 @@ def profile():
 # --------------Bot Spot---------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@-------------------------------------
 
 
-@app.route("/Cayoshibot", methods=["POST"])
+@app.route("/spot", methods=["POST"])
 def Cayoshibot():
     if request.method == "POST":
-        Bot_spot_1.CayoshiM()
+        data = request.data
+
+        print(data)
+        Bot_Spot.CayoshiM(data)
 
     return ""
 

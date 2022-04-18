@@ -24,31 +24,37 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
     else:
         icon = "bell"
     if type_ == "Future":
+        on_click = """onClick="reply_click_future(this.id)"""
         future_option = """  <div class="mb-0">
-                                                <div class="text-success">
-
+                                                <div>
+                                                    <span class="text-success" >
                                                     Long alert: 59
                                                     Close Long : 59
+                                                    </span>
                                                 </div>
 
-                                                <div class="text-danger">
-
+                                                <div >
+                                                    <span class="text-danger">
                                                     Short alert: 58
                                                     Close Short : 58
+                                                    </span>
                                                 </div>
 
                                                 <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
                                             </div>"""
     else:
+        on_click = """onClick="reply_click_spot(this.id)"""
         future_option = """  <div class="mb-0">
-                                                <div class="text-success">
-
+                                                <div>
+                                                    <span class="text-success">
                                                     Buy alert: 59
+                                                     </span>
                                                 </div>
 
-                                                <div class="text-danger">
-
+                                                <div>
+                                                     <span class="text-danger">           
                                                     Sell alert: 58
+                                                     </span>
                                                 </div>
 
                                                 <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
@@ -61,15 +67,20 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
                                                     <div class="container-fluid m-0 p-0">
                                                         <a class="navbar-brand">"""+str(Label_API) + """</a>
                                                         <form class="d-flex" method="POST">
+                                                        <a class="nav-icon dropdown-toggle" id="code_Bot_"""+id+"""" onClick="post_click(this.id)" data-bs-toggle="modal" data-bs-target="#code_Bot_"""+id+"""modal">
+                                                                <div class="position-relative justify-content-md-end">
+                                                                    <i class="align-middle mx-0" data-feather="code"></i>
 
-                                                            <a class="nav-icon dropdown-toggle" id="detail_Bot_"""+id+"""" onClick="reply_click(this.id)" data-bs-toggle="modal" data-bs-target="#detail_Bot_"""+id+"""modal">
+                                                                </div>
+                                                            </a>
+                                                            <a class="nav-icon dropdown-toggle" id="detail_Bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#detail_Bot_"""+id+"""modal">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="help-circle"></i>
 
                                                                 </div>
                                                             </a>
 
-                                                            <a class="nav-icon dropdown-toggle" id="""+ids+""" onClick="reply_click(this.id)" data-bs-toggle="modal" data-bs-target="#pause_bot_Modal" """+message_+""">
+                                                            <a class="nav-icon dropdown-toggle" id="""+ids+""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#pause_bot_Modal" """+message_+""">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="""+icon+""" ></i>
 
@@ -78,7 +89,7 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
 
 
 
-                                                            <a class="nav-icon dropdown-toggle" id="delete_bot_"""+id+"""" onClick="reply_click(this.id)" data-bs-toggle="modal" data-bs-target="#delete_bot_Modal">
+                                                            <a class="nav-icon dropdown-toggle" id="delete_bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#delete_bot_Modal">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="trash-2"></i>
 
@@ -110,7 +121,7 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
     id = str(id_bot)
     idx = id+"_"
     type_ = str(type_bot)
-
+    #PassPhrase = '"'+str(PassPhrase)+'"'
     if MarginType == "ISOLATED":
         MarginType_ = """<ul onChange="add_text(this.id)" id="""+idx+"""MarginType><li><input id="MarginType-0" name="""+idx+"""MarginType type="radio" value="ISOLATED" checked> <label for="MarginType-0">ISOLATED</label></li><li><input id="MarginType-1" name=""" + \
             idx+"""MarginType type="radio" value="CROSSED"> <label for="MarginType-1">CROSSED</label></li></ul>"""
@@ -135,6 +146,7 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
             idx+"""ReOpenOrder  type="radio" value="OFF"> <label for="ReOpenOrder-1">OFF</label></li></ul>"""
 
     if type_ == "Future":
+        onChange = """onChange="add_text_future(this.id)"""
         future_option = """ <div class="input-group m-2">
                                                     <div class="col">
                                                         <div class="row">
@@ -154,9 +166,60 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                     </div>
                                                 </div>"""
     else:
+        onChange = """onChange="add_text_spot(this.id)"""
         future_option = ""
 
-    html_modal = """<div class="modal fade" id="detail_Bot_"""+id+"""modal" tabindex="-1" aria-labelledby="detail_Bot_"""+id+"""_Label" aria-hidden="true">
+    html_modal = """<div class="modal fade" id="code_Bot_"""+id+"""modal" tabindex="-1" aria-labelledby="code_Bot_"""+id+"""_Label" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="code_Bot_"""+id+"""_Label">Scrip</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            
+                                               
+                                                <div class="row">
+                                                    <div class="input-group m-2">
+                                                        <span class="input-group-text">Scrip</span> <input class="form-control" id="""+idx+"""scrip name="scrip" type="tel" 
+                                                     
+                                                        value='{"side":"xxx","amount":"xxx","symbol":"xxx","passphrase":"""'"'+PassPhrase+'"'""","strategy":"xxx"}' >
+                                                    </div>
+                                                </div>
+                                                <div class="row"><!-- copy_scrip hiden | d-none d-print-block | -->
+                                                    <div class="col-md text-center d-none d-print-block">
+                                                        <button type="button" class="btn btn-outline-primary" id="""+idx+"""bt_scrip onClick="copy_scrip(this.id)"  >Copy</button>
+                                                    </div> 
+                                                </div>
+                                                <!-- Modal -->
+                                                <div class="row">
+                                                    <div class="input-group m-2">
+                                                        <span class="input-group-text">Test Send</span> <input class="form-control" id="""+idx+"""test_send name="""+idx+"""test_send type="tel" 
+                                                        onChange="test_send(this.id)" 
+                                                        value='{"side":"xxx","amount":"xxx","symbol":"xxx","passphrase":"""'"'+PassPhrase+'"'""","strategy":"xxx"}' >
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md text-center">
+                                                       
+                                                        <input class="btn btn-primary" id="test_send" name="test_send" type="submit"  value="TEST SEND">
+                                                    </div> 
+                                                </div>
+                                                
+                                           
+                                           
+                                        </div>
+                                        
+                                    
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="detail_Bot_"""+id+"""modal" tabindex="-1" aria-labelledby="detail_Bot_"""+id+"""_Label" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -169,26 +232,26 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                 """+future_option+"""
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" onChange="add_text(this.id)" value='"""+str(Label_API)+"""' >
+                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" """+onChange+"""" value='"""+str(Label_API)+"""' >
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" onChange="add_text(this.id)" value="""+API_Key+""">
+                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" """+onChange+"""" value="""+API_Key+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" onChange="add_text(this.id)" type="tel" value="""+API_SECRET+""">
+                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" """+onChange+"""" type="tel" value="""+API_SECRET+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" onChange="add_text(this.id)" type="tel" value="""+LineNotify+""">
+                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" """+onChange+"""" type="tel" value="""+LineNotify+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" onChange="add_text(this.id)" type="tel" value="""+PassPhrase+""">
+                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" """+onChange+"""" type="tel" value="""+PassPhrase+""" readonly>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <input class="btn btn-primary" id="api_update" name="api_update" type="submit" value="api_update">
+                                            <input class="btn btn-primary" id="api_update" name="api_update" type="submit" value="API UPDATE">
                                         </div>
                                     </div>
                                 </div>

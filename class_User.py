@@ -15,6 +15,22 @@ class MyfromLogin(FlaskForm):
     Remember_password = BooleanField(name="Remember password")
 
 
+class Profile(FlaskForm):
+    Save_Changes = SubmitField("Save Changes")
+    UserID = TelField(name="UserID Name")
+    User_Password = TelField(name="Password")
+    User_NewPassword = TelField(name="New Password")
+    UserEmail = TelField(name="Email")
+    exchange = SelectField("exchange", choices=[
+        ("Binace", "Binace"), ("Bitkub", "Bitkub")])
+    spot_future = SelectField("spot_future", choices=[
+                              ("Spot", "Spot"), ("Future", "Future")])
+    buy_demo = SubmitField("Demo 1 Month")
+    buy_1 = SubmitField("Buy 1 Month")
+    buy_3 = SubmitField("Buy 3 Month")
+    buy_12 = SubmitField("Buy 12 Month")
+
+
 class register(FlaskForm):
 
     Regis_UserID = TelField(name="User ID")

@@ -10,31 +10,73 @@
     }
 </script>
 
-<script type="text/javascript">
+<script>
     var id = ""
     //เช็กปุ่มว่า กดจากปุ่มไหน ให้ส่ง id ปุ่มเข้ามา ใช้กับ แถบบอท
+    //document.getElementById ("btnsave").addEventListener ("click", resetEmotes, false);
     function reply_click(clicked_id) {
-        
+     
         document.getElementById("pass_action").value = clicked_id;
+      
+     
         var str_ID = clicked_id.replace("detail_Bot_","")
         id = str_ID
-        console.log(str_ID+"_Label_API")
+        console.log(str_ID+"_PassPhrase")
+       
         // document.getElementById("set_txt1").value >>> เป็นตัวส่งข้อความไปฝั่ง PY = document.getElementById(str_ID+"_Label_API").value >>> เป็นตัวโยนค่าจาก HTML ไปให้ form 
-        document.getElementById("set_txt1").value = document.getElementById(str_ID+"_Label_API").value
-        document.getElementById("set_txt2").value = document.getElementById(str_ID+"_API_Key").value
-        document.getElementById("set_txt3").value = document.getElementById(str_ID+"_API_SECRET").value
-        document.getElementById("set_txt4").value = document.getElementById(str_ID+"_LineNotify").value
-        document.getElementById("set_txt5").value = document.getElementById(str_ID+"_PassPhrase").value
+
    
-
-        document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
-        document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
-
+        
       
     }
 
-     
+    function reply_click_future(clicked_id){
+        document.getElementById("pass_action").value = clicked_id;
+        var str_ID = clicked_id.replace("detail_Bot_","")
+        id = str_ID
+        console.log(str_ID+"_PassPhrase")
+        document.getElementById("set_txt1").value = (document.getElementById(str_ID+"_Label_API").value)
+        document.getElementById("set_txt2").value = (document.getElementById(str_ID+"_API_Key").value)
+        document.getElementById("set_txt3").value = (document.getElementById(str_ID+"_API_SECRET").value)
+        document.getElementById("set_txt4").value = (document.getElementById(str_ID+"_LineNotify").value)
+        document.getElementById("set_txt5").value = (document.getElementById(str_ID+"_PassPhrase").value)
+  
+        document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+    
+        
 
+    }
+    function reply_click_spot(clicked_id){
+        document.getElementById("pass_action").value = clicked_id;
+        var str_ID = clicked_id.replace("detail_Bot_","")
+        id = str_ID
+        console.log(str_ID+"_PassPhrase")
+        document.getElementById("set_txt1").value = (document.getElementById(str_ID+"_Label_API").value)
+        document.getElementById("set_txt2").value = (document.getElementById(str_ID+"_API_Key").value)
+        document.getElementById("set_txt3").value = (document.getElementById(str_ID+"_API_SECRET").value)
+        document.getElementById("set_txt4").value = (document.getElementById(str_ID+"_LineNotify").value)
+        document.getElementById("set_txt5").value = (document.getElementById(str_ID+"_PassPhrase").value)
+
+    }
+    function post_click(post_ID){
+        
+        var str_ID = post_ID.replace("code_Bot_","")
+        id = str_ID
+        document.getElementById("send_post").value = document.getElementById(id+"_test_send").value
+
+    }
+   
+
+    function copy_scrip(ids){
+        console.log(ids.replace("bt_",""))
+        var scrip_ID = document.getElementById(ids.replace("bt_",""));
+        txt = String(scrip_ID.value)
+         console.log(txt)
+        navigator.clipboard.writeText(txt);
+    
+    }
+    
 
     function add_text(ids){ 
     //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
@@ -73,6 +115,67 @@
             document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
         }
     }  
+    function test_send(ids) {
+        var txt =document.getElementById(ids).value;
+        document.getElementById("send_post").value = txt
+    }
+
+    function add_text_future(ids){ 
+    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
+        var id = ids.split("_")[0]
+        var txt =document.getElementById(ids).value;
+      
+        var radio = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        var radio2 = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+
+        if (ids == id+"_Label_API"){
+            document.getElementById("set_txt1").value = txt
+        }
+        if (ids == id+"_API_Key"){
+            document.getElementById("set_txt2").value = txt
+        }
+        if (ids == id+"_API_SECRET"){   
+            document.getElementById("set_txt3").value = txt
+        }
+        if (ids == id+"_LineNotify"){
+            document.getElementById("set_txt4").value = txt
+        }
+        if (ids == id+"_PassPhrase"){
+            document.getElementById("set_txt5").value = txt
+        }
+        if (ids == id+"_MarginType"){
+            document.getElementById("set_txt6").value = radio
+        }
+        if (ids == id+"_ReOpenOrder"){
+            document.getElementById("set_txt7").value = radio2
+        }
+    } 
+    function add_text_spot(ids){ 
+    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
+        
+        var id = ids.split("_")[0]
+    
+        var txt =document.getElementById(ids).value;
+      
+  
+    
+        if (ids == id+"_Label_API"){
+            document.getElementById("set_txt1").value = txt
+        }
+        if (ids == id+"_API_Key"){
+            document.getElementById("set_txt2").value = txt
+        }
+        if (ids == id+"_API_SECRET"){   
+            document.getElementById("set_txt3").value = txt
+        }
+        if (ids == id+"_LineNotify"){
+            document.getElementById("set_txt4").value = txt
+        }
+        if (ids == id+"_PassPhrase"){
+            document.getElementById("set_txt5").value = txt
+        }
+  
+    } 
    
 </script>
 
@@ -89,7 +192,8 @@
             {{form.set_txt5(class="visually-hidden-focusable",value="x")}}
             {{form.set_txt6(class="visually-hidden-focusable",value="x")}}
             {{form.set_txt7(class="visually-hidden-focusable",value="x")}}
-           
+
+            {{form.send_post(class="visually-hidden-focusable",value="x")}}
            
            
            <div class="card ">
@@ -264,9 +368,9 @@
                                                             <div class="input-group m-2">
                                                                 <span class="input-group-text">LineNotify</span> {{form.LineNotify(class="form-control")}}
                                                             </div>
-                                                            <div class="input-group m-2">
+                                                            {# <div class="input-group m-2">
                                                                 <span class="input-group-text">PassPhrase</span> {{form.PassPhrase(class="form-control")}}
-                                                            </div>
+                                                            </div> #}
                                                         </div>
                                                     </div>
                                                 </div>

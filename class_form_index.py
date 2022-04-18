@@ -40,3 +40,6 @@ class form_Dashboard(FlaskForm):
     set_txt5 = TelField("set_txt5")
     set_txt6 = TelField("set_txt6")
     set_txt7 = TelField("set_txt7")
+
+    test_send = SubmitField("TEST SEND")
+    send_post = TelField("send post")
