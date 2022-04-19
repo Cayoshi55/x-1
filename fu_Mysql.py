@@ -128,11 +128,11 @@ def Alert_insert(user_id, apikey, botAction, price, side, amount, symbol, passph
 ################################
 
 
-def API_select(userID, apikey):
+def API_select(userID, Passphrase, apikey):
     try:
         db = connect_mysql()
         cursor = db.cursor()
-        sql = "call API_select('"+userID+"','"+apikey+"')"
+        sql = "call API_select('"+userID+"','"+Passphrase+"','"+apikey+"')"
 
         print("API_select Sql : " + sql)
         cursor.execute(sql)

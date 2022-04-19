@@ -1,0 +1,235 @@
+2022-04-19 21:03:57,750 [INFO]  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.94:5000 (Press CTRL+C to quit)
+2022-04-19 21:03:57,752 [INFO]  * Restarting with stat
+2022-04-19 21:03:59,153 [WARNING]  * Debugger is active!
+2022-04-19 21:03:59,164 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:04:00,964 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:00] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:04:01,693 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,703 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,718 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,752 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,754 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,754 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:04:01,762 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:01] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:04:04,566 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:04] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:04:04,628 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:04] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:04:04,630 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:04] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:04:04,786 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:04] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:04:04,849 [INFO] 192.168.43.94 - - [19/Apr/2022 21:04:04] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:16:19,370 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\connectSQL.py', reloading
+2022-04-19 21:16:19,508 [INFO]  * Restarting with stat
+2022-04-19 21:16:20,838 [WARNING]  * Debugger is active!
+2022-04-19 21:16:20,854 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:16:37,077 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\connectSQL.py', reloading
+2022-04-19 21:16:37,188 [INFO]  * Restarting with stat
+2022-04-19 21:16:38,434 [WARNING]  * Debugger is active!
+2022-04-19 21:16:38,444 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:17:10,825 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\connectSQL.py', reloading
+2022-04-19 21:17:11,002 [INFO]  * Restarting with stat
+2022-04-19 21:17:12,418 [WARNING]  * Debugger is active!
+2022-04-19 21:17:12,430 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:17:15,778 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:15] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:17:16,543 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,551 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,573 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,619 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,620 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,626 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:16,629 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:16] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:18,799 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:18] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:17:18,883 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:18] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:17:18,971 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:18] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:17:18,980 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:18] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:17:19,025 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:19] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:17:19,032 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:19] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:19,090 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:19] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:19,092 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:19] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:17:19,098 [INFO] 192.168.43.94 - - [19/Apr/2022 21:17:19] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:18:35,386 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\connectSQL.py', reloading
+2022-04-19 21:18:35,533 [INFO]  * Restarting with stat
+2022-04-19 21:18:36,880 [WARNING]  * Debugger is active!
+2022-04-19 21:18:36,892 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:18:41,972 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\connectSQL.py', reloading
+2022-04-19 21:18:42,100 [INFO]  * Restarting with stat
+2022-04-19 21:18:43,553 [WARNING]  * Debugger is active!
+2022-04-19 21:18:43,564 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:18:49,107 [INFO] 192.168.43.94 - - [19/Apr/2022 21:18:49] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:18:49,912 [INFO] 192.168.43.94 - - [19/Apr/2022 21:18:49] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:18:49,912 [INFO] 192.168.43.94 - - [19/Apr/2022 21:18:49] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:18:50,002 [INFO] 192.168.43.94 - - [19/Apr/2022 21:18:50] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:18:50,074 [INFO] 192.168.43.94 - - [19/Apr/2022 21:18:50] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:19:56,385 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:19:56,517 [INFO]  * Restarting with stat
+2022-04-19 21:19:57,828 [WARNING]  * Debugger is active!
+2022-04-19 21:19:57,842 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:20:04,934 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:20:05,078 [INFO]  * Restarting with stat
+2022-04-19 21:20:06,485 [WARNING]  * Debugger is active!
+2022-04-19 21:20:06,503 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:20:07,073 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:20:07,855 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,861 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,940 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,945 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,982 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,982 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:07,986 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:07] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:10,610 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:10] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:20:10,666 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:10] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:20:10,667 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:10] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:20:10,804 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:10] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:20:10,863 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:10] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:20:50,824 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:50] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:20:50,906 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:50] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:20:50,981 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:50] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:20:50,983 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:50] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:20:51,007 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:51] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:51,009 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:51] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:51,023 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:51] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:20:51,024 [INFO] 192.168.43.94 - - [19/Apr/2022 21:20:51] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:21:59,837 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:21:59,978 [INFO]  * Restarting with stat
+2022-04-19 21:22:01,464 [WARNING]  * Debugger is active!
+2022-04-19 21:22:01,478 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:22:04,471 [INFO] 192.168.43.94 - - [19/Apr/2022 21:22:04] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:22:05,252 [INFO] 192.168.43.94 - - [19/Apr/2022 21:22:05] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:22:05,252 [INFO] 192.168.43.94 - - [19/Apr/2022 21:22:05] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:22:05,324 [INFO] 192.168.43.94 - - [19/Apr/2022 21:22:05] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:22:05,350 [INFO] 192.168.43.94 - - [19/Apr/2022 21:22:05] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:01,190 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:23:01,315 [INFO]  * Restarting with stat
+2022-04-19 21:23:02,713 [WARNING]  * Debugger is active!
+2022-04-19 21:23:02,732 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:23:03,608 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:03] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:23:04,374 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,384 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,405 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,453 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,460 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,463 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:04,467 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:04] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:07,244 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:07] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:23:07,294 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:07] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:23:07,296 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:07] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:23:07,415 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:07] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:07,464 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:07] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:21,007 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:23:21,154 [INFO]  * Restarting with stat
+2022-04-19 21:23:22,487 [WARNING]  * Debugger is active!
+2022-04-19 21:23:22,500 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:23:22,615 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:22] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:23:23,425 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,426 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,454 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,512 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,513 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,517 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:23,525 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:23] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:23:25,616 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:25] "[35m[1mPOST /Dashboard HTTP/1.1[0m" 500 -
+2022-04-19 21:23:25,676 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:25] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2022-04-19 21:23:25,677 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:25] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2022-04-19 21:23:25,823 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:25] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:23:25,856 [INFO] 192.168.43.94 - - [19/Apr/2022 21:23:25] "[36mGET /Dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-04-19 21:24:04,024 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:24:04,170 [INFO]  * Restarting with stat
+2022-04-19 21:24:05,530 [WARNING]  * Debugger is active!
+2022-04-19 21:24:05,545 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:24:26,798 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:24:26,923 [INFO]  * Restarting with stat
+2022-04-19 21:24:28,277 [WARNING]  * Debugger is active!
+2022-04-19 21:24:28,289 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:24:39,452 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:24:39,581 [INFO]  * Restarting with stat
+2022-04-19 21:24:41,023 [WARNING]  * Debugger is active!
+2022-04-19 21:24:41,037 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:24:46,123 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:24:46,240 [INFO]  * Restarting with stat
+2022-04-19 21:24:47,655 [WARNING]  * Debugger is active!
+2022-04-19 21:24:47,671 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:24:49,103 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:49] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:24:49,907 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:49] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:24:49,916 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:49] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:24:49,963 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:49] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:24:50,002 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:50] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:50,005 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:50] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:50,009 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:50] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:50,014 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:50] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:53,747 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:24:53,812 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:24:53,898 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:24:53,913 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:24:53,985 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:24:53,987 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:53] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:54,025 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:54] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:54,028 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:54] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:24:54,033 [INFO] 192.168.43.94 - - [19/Apr/2022 21:24:54] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,321 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:25:22,390 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:25:22,457 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,468 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,559 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,560 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,567 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,578 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:25:22,578 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:22] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,448 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:25:36,559 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,565 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,661 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,665 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,671 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,671 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:36,675 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:36] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:37,314 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:37] "[36mGET /static/img/icons/ic4848.png HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,494 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:25:46,555 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:25:46,636 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,647 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,696 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,700 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,730 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,733 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:25:46,740 [INFO] 192.168.43.94 - - [19/Apr/2022 21:25:46] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,401 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:26:09,471 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:26:09,559 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,560 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,607 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,632 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,634 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,636 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:09,638 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:09] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:52,141 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:26:52,332 [INFO]  * Restarting with stat
+2022-04-19 21:26:53,857 [WARNING]  * Debugger is active!
+2022-04-19 21:26:53,871 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:26:54,003 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:26:54,787 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,798 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,831 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,837 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,837 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,839 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:54,842 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:54] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:26:55,467 [INFO] 192.168.43.94 - - [19/Apr/2022 21:26:55] "[36mGET /static/img/icons/ic4848.png HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,401 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[32mPOST /Dashboard HTTP/1.1[0m" 302 -
+2022-04-19 21:27:12,462 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "GET /Dashboard HTTP/1.1" 200 -
+2022-04-19 21:27:12,533 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/css/app.css HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,540 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/img/LG2.png HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,597 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/img/avatars/avatar-5.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,600 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,622 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/img/avatars/avatar-2.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,623 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/img/avatars/avatar-4.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:27:12,633 [INFO] 192.168.43.94 - - [19/Apr/2022 21:27:12] "[36mGET /static/img/avatars/avatar-3.jpg HTTP/1.1[0m" 304 -
+2022-04-19 21:50:08,642 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:50:08,828 [INFO]  * Restarting with stat
+2022-04-19 21:50:10,347 [WARNING]  * Debugger is active!
+2022-04-19 21:50:10,361 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:50:30,650 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:50:30,845 [INFO]  * Restarting with stat
+2022-04-19 21:50:32,388 [WARNING]  * Debugger is active!
+2022-04-19 21:50:32,401 [INFO]  * Debugger PIN: 100-556-388
+2022-04-19 21:50:42,544 [INFO]  * Detected change in 'c:\\ProjectPy\\SQL1.2\\func_futures.py', reloading
+2022-04-19 21:50:42,693 [INFO]  * Restarting with stat

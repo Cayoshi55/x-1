@@ -25,11 +25,12 @@ import class_User
 import class_form_index
 #import Bot_spot_1
 import Bot_Spot
-import mybioneway11
+import func_futures
 import class_html
 import socket
 import sys
 import uuid
+import json
 
 
 #app = Flask(__name__, static_url_path='/static')
@@ -64,7 +65,7 @@ def check_UserID():
 
             return True
     except:
-        print("UserID = error")
+
         session["UserID"] = ""
         return True
 
@@ -115,7 +116,6 @@ def login():
 
                     if bcrypt.checkpw(bytes(Pass_login, 'utf-8'), bytes(pass_indata, 'utf-8')) and User_login == user_indata:
 
-                        print("OK")
                         # ตัวเช็ก การเข้าใช้อยู่มั้ย
                         session["UserID"] = form.UserID.data
                         session.permanent = True
@@ -127,10 +127,10 @@ def login():
 
                 except:
                     Pass_login = "donmatch"
-                    print("Password ไม่ถูกต้อง")
+
             except:
                 User_login = "UserIDincorrect"
-                print("ไม่พบ ชื่อผู้ใช้นี้ "+User_login+request.method)
+
         else:
             User_login = ""
     if form.Register_new.data:
@@ -154,7 +154,7 @@ def Dashboard():
     session['playlist_id'] = ""
     u_id = session["UserID"]
 
-    data = fu_Mysql.API_select(u_id, "")
+    data = fu_Mysql.API_select(u_id, "", "")
     data_alert = fu_Mysql.Alert_select(u_id, '', '', '', '')
     htmls = ""
     html_m = ""
@@ -184,7 +184,9 @@ def Dashboard():
             return redirect("/Dashboard")
 
         if request.form.get('test_send') == "TEST SEND":
-
+            print(type(send_post))
+            req_data = json.loads(send_post)
+            func_futures.bin_func._binanceOneway(req_data)
             Bot_Spot.CayoshiM(send_post)
             return redirect("/Dashboard")
         if request.form.get('api_update') == "API UPDATE":
@@ -197,6 +199,10 @@ def Dashboard():
             PassPhrase = form_dashb.set_txt5.data
             MarginType = form_dashb.set_txt6.data
             ReOpenOrder = form_dashb.set_txt7.data
+
+            check_apikey = fu_Mysql.API_select("", "", API_Key)
+            if check_apikey != []:
+                session["ch_api"] = "have"
 
             fu_Mysql.API_Update(id, Label_API, API_Key, API_SECRET, LineNotify,
                                 PassPhrase, MarginType, ReOpenOrder)
@@ -213,16 +219,11 @@ def Dashboard():
             MarginType = form_dashb.MarginType.data
             ReOpenOrder = form_dashb.ReOpenOrder.data
 
+            uuids = str(uuid.uuid4())
             PassPhrase = uuid.uuid5(
-                uuid.NAMESPACE_DNS, session["UserID"]+bot_type)
-            print(PassPhrase)
+                uuid.NAMESPACE_DNS, session["UserID"]+bot_type+uuids)
 
-            # 894c8945-6079-57cf-a255-7566c9603a6e >> Spot
-            # 894c8945-6079-57cf-a255-7566c9603a6e >> Spot
-            # fc20cc82-5785-5f25-9e35-058f6085a2cd >> Future
-            # fc20cc82-5785-5f25-9e35-058f6085a2cd >> Future
-
-            check_apikey = fu_Mysql.API_select("", API_Key)
+            check_apikey = fu_Mysql.API_select("", "", API_Key)
             if check_apikey != []:
                 session["ch_api"] = "have"
 
@@ -255,7 +256,6 @@ def Dashboard():
     else:
         session["html_modal"] = ""
         session["html_isbot"] = ""
-        print("data : non")
 
     return render_template("Dashboard.html", form=form_dashb)
 
@@ -274,10 +274,7 @@ def singup():
         data = fu_Mysql.User_select_login("nateeron", "")
         user_indata = data[0][1]
         email_data = data[0][2]
-        print(type(email))
-        print(Pass_login)
 
-        print(Pass_login)
         if Pass_login:  # != "" and Pass_login != None:
             countPass = len(Pass_login)
 
@@ -292,23 +289,22 @@ def singup():
                 hashed_Str = hashed.decode("utf-8")
                 if user_indata == User_login:
                     User_login = "user_already"
-                    print("********* This username already exists. ********")
+
                     render_template("signup.html", form=form, name=User_login,
                                     email=email, passlogin=Pass_login, Retype_password=Retypepass)
                 elif email_data == email:
                     email = "Email_already"
-                    print("********* This Email already exists. ********")
+
                     render_template("signup.html", form=form, name=User_login,
                                     email=email, passlogin=Pass_login, Retype_password=Retypepass)
                 else:
                     fu_Mysql.User_create(User_login, email, hashed_Str)
-                    print("*********OK*********")
+
                     return redirect("/login")
         else:
             if Pass_login != "len5":
                 Retypepass = "dontmatch"
 
-    print(Retypepass)
     return render_template("signup.html", form=form, name=User_login, email=email, passlogin=Pass_login, Retype_password=Retypepass)
 #############################################################################################################
 # Register
@@ -349,9 +345,6 @@ def validate_password_reset_token(token):
     return signer.unsign(token, max_age=1000)  # 300 = 5 นาที
 
 
-print("**********************************************************************")
-
-
 @app.route("/test", methods=["GET", "POST"])
 def test():
     form = class_User.ResetNewPassword()
@@ -361,10 +354,6 @@ def test():
 ##################[ Send Mail ]###############
 def send_mail(Email_user):
     token = password_reset_token(Email_user)
-
-    print("1..token.<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-    print([app.config['MAIL_USERNAME']])
-    print([Email_user])
 
     with app.app_context():
         msg = Message(subject='Password Reset Request',
@@ -390,8 +379,7 @@ def resetpass():
     session["mail_in"] = form.Email.data
     send_success = ""
     if request.method == "POST":
-        print("session[mail_in]")
-        print(session["mail_in"])
+
         # ดุงข้อมูลจาก DATA  nateeron9@gmail.com
         try:
             data = fu_Mysql.User_select_login("", session["mail_in"])
@@ -407,7 +395,7 @@ def resetpass():
                 # redirect("/login")
             else:
                 send_success = "notfound"
-                return print("ไม่พบผู้ใช้")
+                return print("notfound")
         except:
 
             send_success = "notfound"
@@ -422,9 +410,8 @@ def reset_new_password(token):
     check = ""
     try:
         chacks = validate_password_reset_token(token)
-        print(chacks)
+
         # ถ้า token ไม่หมดอายุให้ รอเปลี่ยน Pass
-        print(request.method)
 
         if request.method == "POST":
             pass_Chang = str(form.Npassword.data)
@@ -441,7 +428,7 @@ def reset_new_password(token):
             else:
                 check = "dontmatch"
     except:
-        print("Token หมดอายุ")
+
         return redirect("/Tokens_expire")
 
     return render_template("reset_new_password.html", form=form, check_password=check)
@@ -473,17 +460,23 @@ def Cayoshibot():
     if request.method == "POST":
         data = request.data
 
-        print(data)
         Bot_Spot.CayoshiM(data)
 
     return ""
 
 
-@app.route('/mybotnaja', methods=['POST', 'GET'])
-def mybotnaja():
-    if request.method == "POST":
-        mybioneway11.mywebhook()
-    return ""
+# --------------Bot Future---------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@-------------------------------------
+
+@app.route('/oneway', methods=['POST', 'GET'])
+def mywebhook():
+    if request.method == 'POST':
+        req_data = request.get_json(force=True)
+
+        func_futures.bin_func._binanceOneway(req_data)
+
+        return 'success', 200
+    else:
+        print('Signal format is incorrect.')
 
 
 @app.route('/status')

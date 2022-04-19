@@ -1,4 +1,15 @@
 {% extends "layout_index.html" %} {% block content %}
+<style type="text/css">
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #313131;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient( to right, rgb(56, 56, 56), rgba(37, 117, 252, 1));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+        background: linear-gradient( to right, rgb(27, 27, 27), rgba(37, 117, 252, 1));
+    }
+</style>
 <!--script html data return py by  .tesStre-->
 <script type="text/javascript">
     function Binace_Spot() {
@@ -179,7 +190,7 @@
    
 </script>
 
-<main class="content">
+<main class="content gradient-custom ">
     <form method="POST">
         <div class="container-fluid p-0">
             {{form.pass_action(class="visually-hidden-focusable",id="pass_action",value="p")}}
@@ -196,12 +207,12 @@
             {{form.send_post(class="visually-hidden-focusable",value="x")}}
            
            
-           <div class="card ">
+           <div class="card bg-dark text-light" style="border-radius: 1rem">
                 <div class="card-header">
                     <h5 class="card-title mb-0">List Alert</h5>
                 </div>
-                <table class="table table-hover my-0">
-                    <thead>
+                <table class="table table-dark table-hover my-0 text-white-50">
+                    <thead class="text-light">
                         <tr>
                             <th class="d-none d-md-table-cell">Date Time</th>
                             <th class="d-none d-xl-table-cell">label</th>
@@ -226,11 +237,11 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-8">
-                    <div class="card">
+                    <div class="card bg-dark text-white flex-fill w-100" style="border-radius: 1rem ">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Dashboard </h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-dark bg-gradient">
                             {%if session["ch_api"] == "have" %}
 
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -246,32 +257,32 @@
 
                             <div class="modal fade" id="pause_bot_Modal" tabindex="-1" aria-labelledby="pause_bot_Label" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="pause_bot_Label">Pause</h5>
+                                    <div class="modal-content bg-dark bg-gradient text-light ">
+                                        <div class="modal-header border-0">
+                                            <h5 class="modal-title text-light" id="pause_bot_Label">Pause</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h6 id="message_txt"></h6>
+                                            <h6 class="text-light" id="message_txt"></h6>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {{form.pause(class="btn btn-primary")}}
+                                        <div class="modal-footer border-0">
+                                            <button type="button" class="btn btn-dark border border-info" data-bs-dismiss="modal">Close</button> {{form.pause(class="btn btn-dark border border-info")}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal fade" id="delete_bot_Modal" tabindex="-1" aria-labelledby="delete_bot_Label" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
+                                    <div class="modal-content bg-dark bg-gradient text-light ">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="delete_bot_1_Label">Delete</h5>
+                                            <h5 class="modal-title text-light" id="delete_bot_1_Label">Delete</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body border-0">
                                             Are you sure Delete ?
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {{form.delete(class="btn btn-primary")}}
+                                        <div class="modal-footer border-0">
+                                            <button type="button" class="btn btn-dark border border-info" data-bs-dismiss="modal">Close</button> {{form.delete(class="btn btn-dark border border-info")}}
                                         </div>
                                     </div>
                                 </div>
@@ -292,21 +303,21 @@
                                     modalBodyInput.textContent = mess_body
                                 })
                             </script>
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <div class="accordion accordion-flush " id="accordionFlushExample" >
+                                <div class="accordion-item bg-dark bg-gradient" style="border-radius: 1rem">
+                                    <h2 class="accordion-header" id="flush-headingOne" >
+                                        <button class="accordion-button collapsed bg-dark bg-gradient text-light" style="border-radius: 1rem" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
        Setting bot & API
       </button>
                                     </h2>
 
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse bg-dark bg-gradient" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="row">
 
                                             <div class="col-12 col-lg-12">
-                                                <div class="card">
+                                                <div class="card bg-dark text-light" style="border-radius: 1rem">
 
-                                                    <div class="card-body">
+                                                    <div class="card-body bg-dark bg-gradient">
                                                         <!-- start -->
                                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -315,12 +326,12 @@
 
                                                                     {{form.to0X8sp765598as00zo23(class="visually-hidden-focusable" ,id="bt_spot",value="spot")}}
                                                                 </div>
-                                                                <button class="nav-link active" name="fname" onclick="Binace_Spot()" id="Binace_Spot-tab" value="spot" data-bs-toggle="tab" data-bs-target="#Binace_Spot" type="button" role="tab" aria-controls="Binace_Spot" aria-selected="false">
+                                                                <button class="btn btn-dark border-bottom-0 border-light active" name="fname" onclick="Binace_Spot()" id="Binace_Spot-tab" value="spot" data-bs-toggle="tab" data-bs-target="#Binace_Spot" type="button" role="tab" aria-controls="Binace_Spot" aria-selected="false">
                                                                                                 Binace Spot
                                                                                             </button>
                                                             </li>
                                                             <li class="nav-item" role="presentation">
-                                                                <button class="nav-link " id="Binace_Future-tab" onclick="Binace_Future()" data-bs-toggle="tab" data-bs-target="#Binace_Future" type="button" role="tab" aria-controls="Binace_Future" aria-selected="false">
+                                                                <button class="btn btn-dark border-bottom-0 border-light" id="Binace_Future-tab" onclick="Binace_Future()" data-bs-toggle="tab" data-bs-target="#Binace_Future" type="button" role="tab" aria-controls="Binace_Future" aria-selected="false">
                                                                              Binace Future
                                                                                 </button>
                                                             </li>
@@ -357,16 +368,16 @@
                                                         <!-- end -->
                                                         <div class="row">
                                                             <div class="input-group m-2">
-                                                                <span class="input-group-text">Label API</span> {{form.Label_API(class="form-control")}}
+                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">Label API</span> {{form.Label_API(class="form-control bg-dark text-light border border-dark")}}
                                                             </div>
                                                             <div class="input-group m-2">
-                                                                <span class="input-group-text">API Key</span> {{form.API_Key(class="form-control")}}
+                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">API Key</span> {{form.API_Key(class="form-control bg-dark text-light border border-dark")}}
                                                             </div>
                                                             <div class="input-group m-2">
-                                                                <span class="input-group-text">API SECRET</span> {{form.API_SECRET(class="form-control")}}
+                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">API SECRET</span> {{form.API_SECRET(class="form-control bg-dark text-light border border-dark")}}
                                                             </div>
                                                             <div class="input-group m-2">
-                                                                <span class="input-group-text">LineNotify</span> {{form.LineNotify(class="form-control")}}
+                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">LineNotify</span> {{form.LineNotify(class="form-control bg-dark text-light border border-dark")}}
                                                             </div>
                                                             {# <div class="input-group m-2">
                                                                 <span class="input-group-text">PassPhrase</span> {{form.PassPhrase(class="form-control")}}
@@ -377,7 +388,7 @@
                                             </div>
                                             <div class="col-12 col-lg-12">
                                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    {{form.Create_API(class="btn btn-primary ")}}
+                                                    {{form.Create_API(class="btn btn-dark border border-info")}}
                                                 </div>
                                             </div>
                                         </div>
@@ -389,7 +400,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-xxl-3 d-flex order-1 order-xxl-1">
-                    <div class="card flex-fill w-100">
+                    <div class="card bg-dark text-white flex-fill w-100" style="border-radius: 1rem">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Browser Usage</h5>
                         </div>
@@ -402,7 +413,7 @@
                                 </div>
 
                                 <table class="table mb-0">
-                                    <tbody>
+                                    <tbody class="text-light ">
                                         <tr>
                                             <td>Chrome</td>
                                             <td class="text-end">4306</td>

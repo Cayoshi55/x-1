@@ -13,16 +13,16 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
     type_ = str(type_bot)
     if status == "stop":
         ids = "pause_bot_"+id
-        color = "alert-dark"
+        color = "bg-secondary bg-gradient"
         message_ = " data-bs-mess_title='Bot Start' data-bs-mess_body='Are you sure Start ?' "
     else:
         ids = "running_bot_"+id
-        color = "alert-success"
+        color = "bg-success bg-gradient"
         message_ = " data-bs-mess_title='Bot Pause' data-bs-mess_body='Are you sure Pause ?' "
     if str(status) == "stop":
-        icon = "bell-off"
-    else:
         icon = "bell"
+    else:
+        icon = "bell-off"
     if type_ == "Future":
         on_click = """onClick="reply_click_future(this.id)"""
         future_option = """  <div class="mb-0">
@@ -59,28 +59,28 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
 
                                                 <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
                                             </div>"""
-    html2 = """ <div class="row ">
-                                    <div class="card">
+    html2 = """ <div class="col">
+                                    <div class="card bg-dark" style="border-radius: 1rem">
                                         <div class="card-body">
                                             <div class="row">
-                                                <nav class="navbar navbar-light """+color+""" m-0 p-0">
-                                                    <div class="container-fluid m-0 p-0">
-                                                        <a class="navbar-brand">"""+str(Label_API) + """</a>
+                                                <nav class="navbar navbar-light """+color+""" m-0 p-0" style="border-radius: 0.5rem">
+                                                    <div class="container-fluid">
+                                                        <a class="navbar-brand text-white">"""+str(Label_API) + """</a>
                                                         <form class="d-flex" method="POST">
-                                                        <a class="nav-icon dropdown-toggle" id="code_Bot_"""+id+"""" onClick="post_click(this.id)" data-bs-toggle="modal" data-bs-target="#code_Bot_"""+id+"""modal">
+                                                        <a class="nav-icon dropdown-toggle text-white" id="code_Bot_"""+id+"""" onClick="post_click(this.id)" data-bs-toggle="modal" data-bs-target="#code_Bot_"""+id+"""modal">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="code"></i>
 
                                                                 </div>
                                                             </a>
-                                                            <a class="nav-icon dropdown-toggle" id="detail_Bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#detail_Bot_"""+id+"""modal">
+                                                            <a class="nav-icon dropdown-toggle text-white" id="detail_Bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#detail_Bot_"""+id+"""modal">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="help-circle"></i>
 
                                                                 </div>
                                                             </a>
 
-                                                            <a class="nav-icon dropdown-toggle" id="""+ids+""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#pause_bot_Modal" """+message_+""">
+                                                            <a class="nav-icon dropdown-toggle text-white" id="""+ids+""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#pause_bot_Modal" """+message_+""">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="""+icon+""" ></i>
 
@@ -89,7 +89,7 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
 
 
 
-                                                            <a class="nav-icon dropdown-toggle" id="delete_bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#delete_bot_Modal">
+                                                            <a class="nav-icon dropdown-toggle text-white" id="delete_bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#delete_bot_Modal">
                                                                 <div class="position-relative justify-content-md-end">
                                                                     <i class="align-middle mx-0" data-feather="trash-2"></i>
 
@@ -103,7 +103,7 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
 
                                             <div class="row">
 
-                                                <h3 class="mt-1 mb-3">"""+str(type_) + """</h3>
+                                                <h3 class="mt-1 mb-3 text-white">"""+str(type_) + """</h3>
 
                                             </div>
 
@@ -171,10 +171,10 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
 
     html_modal = """<div class="modal fade" id="code_Bot_"""+id+"""modal" tabindex="-1" aria-labelledby="code_Bot_"""+id+"""_Label" aria-hidden="true">
                                 <div class="modal-dialog modal-xl modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="code_Bot_"""+id+"""_Label">Scrip</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-content bg-dark bg-gradient text-light border-0">
+                                        <div class="modal-header  text-light">
+                                            <h5 class="modal-title  text-light" id="code_Bot_"""+id+"""_Label">Scrip</h5>
+                                            <button type="button" class="btn-close bg-light text-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
 
@@ -182,20 +182,20 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Scrip</span> <input class="form-control" id="""+idx+"""scrip name="scrip" type="tel" 
+                                                        <span class="input-group-text bg-dark bg-gradient text-light border border-dark">Scrip</span> <input class="form-control  bg-dark text-light border border-dark" id="""+idx+"""scrip name="scrip" type="tel" 
                                                      
                                                         value='{"side":"xxx","amount":"xxx","symbol":"xxx","passphrase":"""'"'+PassPhrase+'"'""","strategy":"xxx"}' >
                                                     </div>
                                                 </div>
                                                 <div class="row"><!-- copy_scrip hiden | d-none d-print-block | -->
                                                     <div class="col-md text-center d-none d-print-block">
-                                                        <button type="button" class="btn btn-outline-primary" id="""+idx+"""bt_scrip onClick="copy_scrip(this.id)"  >Copy</button>
+                                                        <button type="button" class="btn btn-outline-primary bg-dark bg-gradient text-light border border-dark" id="""+idx+"""bt_scrip onClick="copy_scrip(this.id)"  >Copy</button>
                                                     </div> 
                                                 </div>
                                                 <!-- Modal -->
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Test Send</span> <input class="form-control" id="""+idx+"""test_send name="""+idx+"""test_send type="tel" 
+                                                        <span class="input-group-text   bg-dark bg-gradient text-light border border-dark">Test Send</span> <input class="form-control  bg-dark text-light border border-dark" id="""+idx+"""test_send name="""+idx+"""test_send type="tel" 
                                                         onChange="test_send(this.id)" 
                                                         value='{"side":"xxx","amount":"xxx","symbol":"xxx","passphrase":"""'"'+PassPhrase+'"'""","strategy":"xxx"}' >
                                                     </div>
@@ -203,16 +203,11 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                   <div class="row">
                                                     <div class="col-md text-center">
                                                        
-                                                        <input class="btn btn-primary" id="test_send" name="test_send" type="submit"  value="TEST SEND">
+                                                        <input class="btn btn-dark border border-info" id="test_send" name="test_send" type="submit"  value="TEST SEND">
                                                     </div> 
                                                 </div>
-                                                
-                                           
-                                           
                                         </div>
-                                        
-                                    
-                                        <div class="modal-footer">
+                                        <div class="modal-footer border-0">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                       
                                         </div>
@@ -221,9 +216,9 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                             </div>
                             <div class="modal fade" id="detail_Bot_"""+id+"""modal" tabindex="-1" aria-labelledby="detail_Bot_"""+id+"""_Label" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="detail_Bot_"""+id+"""_Label">Detail</h5>
+                                    <div class="modal-content bg-dark bg-gradient text-light border-0">
+                                        <div class="modal-header  border-0">
+                                            <h5 class="modal-title text-light" id="detail_Bot_"""+id+"""_Label">Detail</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -232,26 +227,26 @@ def html_modal(id_bot, type_bot, MarginType, ReOpenOrder, Label_API, API_Key, AP
                                                 """+future_option+"""
                                                 <div class="row">
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">Label API</span> <input class="form-control" id="""+idx+"""Label_API name="Label_API" type="tel" """+onChange+"""" value='"""+str(Label_API)+"""' >
+                                                        <span class="input-group-text  bg-dark bg-gradient text-light border border-dark">Label API</span> <input class="form-control bg-dark text-light border border-dark" id="""+idx+"""Label_API name="Label_API" type="tel" """+onChange+"""" value='"""+str(Label_API)+"""' >
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API Key</span> <input class="form-control" id="""+idx+"""API_Key name="API_Key" type="tel" """+onChange+"""" value="""+API_Key+""">
+                                                        <span class="input-group-text  bg-dark bg-gradient text-light border border-dark">API Key</span> <input class="form-control bg-dark text-light border border-dark" id="""+idx+"""API_Key name="API_Key" type="tel" """+onChange+"""" value="""+API_Key+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">API SECRET</span> <input class="form-control" id="""+idx+"""API_SECRET name="API_SECRET" """+onChange+"""" type="tel" value="""+API_SECRET+""">
+                                                        <span class="input-group-text bg-dark bg-gradient text-light border border-dark">API SECRET</span> <input class="form-control bg-dark text-light border border-dark" id="""+idx+"""API_SECRET name="API_SECRET" """+onChange+"""" type="tel" value="""+API_SECRET+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">LineNotify</span> <input class="form-control" id="""+idx+"""LineNotify name="LineNotify" """+onChange+"""" type="tel" value="""+LineNotify+""">
+                                                        <span class="input-group-text bg-dark bg-gradient text-light border border-dark">LineNotify</span> <input class="form-control bg-dark text-light border border-dark" id="""+idx+"""LineNotify name="LineNotify" """+onChange+"""" type="tel" value="""+LineNotify+""">
                                                     </div>
                                                     <div class="input-group m-2">
-                                                        <span class="input-group-text">PassPhrase</span> <input class="form-control" id="""+idx+"""PassPhrase name="PassPhrase" """+onChange+"""" type="tel" value="""+PassPhrase+""" readonly>
+                                                        <span class="input-group-text bg-dark bg-gradient text-light border border-dark">PassPhrase</span> <input class="form-control bg-dark text-light border border-dark" id="""+idx+"""PassPhrase name="PassPhrase" """+onChange+"""" type="tel" value="""+PassPhrase+""" readonly>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <input class="btn btn-primary" id="api_update" name="api_update" type="submit" value="API UPDATE">
+                                        <div class="modal-footer  border-0">
+                                            <button type="button" class="btn btn-dark border border-info" data-bs-dismiss="modal">Close</button>
+                                            <input class="btn btn-dark border border-info" id="api_update" name="api_update" type="submit" value="API UPDATE">
                                         </div>
                                     </div>
                                 </div>

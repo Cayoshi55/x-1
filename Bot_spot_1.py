@@ -105,7 +105,7 @@ def CayoshiM():
     try:
         data = json.loads(request.data)
     except:
-
+        Alert_error("")
     try:  # 1
         print(Fore.RED)
         try:
