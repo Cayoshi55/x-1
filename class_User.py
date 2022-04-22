@@ -21,14 +21,17 @@ class Profile(FlaskForm):
     User_Password = TelField(name="Password")
     User_NewPassword = TelField(name="New Password")
     UserEmail = TelField(name="Email")
-    exchange = SelectField("exchange", choices=[
-        ("Binace", "Binace"), ("Bitkub", "Bitkub")])
+
+
+class Billing_s(FlaskForm):
+    exchange = SelectField("exchange", choices=[(
+        "Binace", "Binace"), ("Bitkub", "Bitkub")])
     spot_future = SelectField("spot_future", choices=[
                               ("Spot", "Spot"), ("Future", "Future")])
-    buy_demo = SubmitField("Demo 1 Month")
-    buy_1 = SubmitField("Buy 1 Month")
-    buy_3 = SubmitField("Buy 3 Month")
-    buy_12 = SubmitField("Buy 12 Month")
+    buy_demo = TelField("Demo 1 Month")
+    buy_1 = TelField("Buy 1 Month")
+    buy_3 = TelField("Buy 3 Month")
+    buy_12 = TelField("Buy 12 Month")
 
 
 class register(FlaskForm):
@@ -56,3 +59,7 @@ class ResetNewPassword(FlaskForm):
 
 class expTOken(FlaskForm):
     send_Submit_toforget = SubmitField("forgot my password")
+
+
+class test_(FlaskForm):
+    send_Submit = SubmitField("Send Submit")

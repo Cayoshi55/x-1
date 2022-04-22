@@ -1,213 +1,246 @@
 {% extends "layout_index.html" %} {% block content %}
-<style type="text/css">
-    .gradient-custom {
-        /* fallback for old browsers */
-        background: #313131;
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient( to right, rgb(56, 56, 56), rgba(37, 117, 252, 1));
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
-    12+, Safari 7+ */
-        background: linear-gradient( to right, rgb(27, 27, 27), rgba(37, 117, 252, 1));
-    }
-</style>
+
 <!--script html data return py by  .tesStre-->
 <script type="text/javascript">
     function Binace_Spot() {
         document.getElementById("bt_spot").value = "spot";
+        var bot_t = '/Dashboards/spot'
+        document.getElementById("Create_API").href = bot_t;
+
+
     }
 
     function Binace_Future() {
         document.getElementById("bt_spot").value = "Future";
+        var bot_t = '/Dashboards/Future'
+        document.getElementById("Create_API").href = bot_t;
     }
 </script>
 
 <script>
     var id = ""
-    //เช็กปุ่มว่า กดจากปุ่มไหน ให้ส่ง id ปุ่มเข้ามา ใช้กับ แถบบอท
-    //document.getElementById ("btnsave").addEventListener ("click", resetEmotes, false);
+        //เช็กปุ่มว่า กดจากปุ่มไหน ให้ส่ง id ปุ่มเข้ามา ใช้กับ แถบบอท
+        //document.getElementById ("btnsave").addEventListener ("click", resetEmotes, false);
     function reply_click(clicked_id) {
-     
+
         document.getElementById("pass_action").value = clicked_id;
-      
-     
-        var str_ID = clicked_id.replace("detail_Bot_","")
+
+
+        var str_ID = clicked_id.replace("detail_Bot_", "")
         id = str_ID
-        console.log(str_ID+"_PassPhrase")
-       
+        console.log(str_ID + "_PassPhrase")
+
         // document.getElementById("set_txt1").value >>> เป็นตัวส่งข้อความไปฝั่ง PY = document.getElementById(str_ID+"_Label_API").value >>> เป็นตัวโยนค่าจาก HTML ไปให้ form 
 
-   
-        
-      
+
+
+
     }
 
-    function reply_click_future(clicked_id){
+    function reply_click_future(clicked_id) {
         document.getElementById("pass_action").value = clicked_id;
-        var str_ID = clicked_id.replace("detail_Bot_","")
+        var str_ID = clicked_id.replace("detail_Bot_", "")
         id = str_ID
-        console.log(str_ID+"_PassPhrase")
-        document.getElementById("set_txt1").value = (document.getElementById(str_ID+"_Label_API").value)
-        document.getElementById("set_txt2").value = (document.getElementById(str_ID+"_API_Key").value)
-        document.getElementById("set_txt3").value = (document.getElementById(str_ID+"_API_SECRET").value)
-        document.getElementById("set_txt4").value = (document.getElementById(str_ID+"_LineNotify").value)
-        document.getElementById("set_txt5").value = (document.getElementById(str_ID+"_PassPhrase").value)
-  
-        document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
-        document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
-    
-        
+        console.log(str_ID + "_PassPhrase")
+        document.getElementById("set_txt1").value = (document.getElementById(str_ID + "_Label_API").value)
+        document.getElementById("set_txt2").value = (document.getElementById(str_ID + "_API_Key").value)
+        document.getElementById("set_txt3").value = (document.getElementById(str_ID + "_API_SECRET").value)
+        document.getElementById("set_txt4").value = (document.getElementById(str_ID + "_LineNotify").value)
+        document.getElementById("set_txt5").value = (document.getElementById(str_ID + "_PassPhrase").value)
+
+        document.getElementById("set_txt6").value = document.querySelector('input[name="' + id + '_MarginType"]:checked').value
+        document.getElementById("set_txt7").value = document.querySelector('input[name="' + id + '_ReOpenOrder"]:checked').value
+
+
 
     }
-    function reply_click_spot(clicked_id){
+
+    function reply_click_spot(clicked_id) {
         document.getElementById("pass_action").value = clicked_id;
-        var str_ID = clicked_id.replace("detail_Bot_","")
+        var str_ID = clicked_id.replace("detail_Bot_", "")
         id = str_ID
-        console.log(str_ID+"_PassPhrase")
-        document.getElementById("set_txt1").value = (document.getElementById(str_ID+"_Label_API").value)
-        document.getElementById("set_txt2").value = (document.getElementById(str_ID+"_API_Key").value)
-        document.getElementById("set_txt3").value = (document.getElementById(str_ID+"_API_SECRET").value)
-        document.getElementById("set_txt4").value = (document.getElementById(str_ID+"_LineNotify").value)
-        document.getElementById("set_txt5").value = (document.getElementById(str_ID+"_PassPhrase").value)
+        console.log(str_ID + "_PassPhrase")
+        document.getElementById("set_txt1").value = (document.getElementById(str_ID + "_Label_API").value)
+        document.getElementById("set_txt2").value = (document.getElementById(str_ID + "_API_Key").value)
+        document.getElementById("set_txt3").value = (document.getElementById(str_ID + "_API_SECRET").value)
+        document.getElementById("set_txt4").value = (document.getElementById(str_ID + "_LineNotify").value)
+        document.getElementById("set_txt5").value = (document.getElementById(str_ID + "_PassPhrase").value)
 
     }
-    function post_click(post_ID){
-        
-        var str_ID = post_ID.replace("code_Bot_","")
+
+    function post_click(post_ID) {
+
+        var str_ID = post_ID.replace("code_Bot_", "")
         id = str_ID
-        document.getElementById("send_post").value = document.getElementById(id+"_test_send").value
+        document.getElementById("send_post").value = document.getElementById(id + "_test_send").value
 
     }
-   
 
-    function copy_scrip(ids){
-        console.log(ids.replace("bt_",""))
-        var scrip_ID = document.getElementById(ids.replace("bt_",""));
+
+    function copy_scrip(ids) {
+        console.log(ids.replace("bt_", ""))
+        var scrip_ID = document.getElementById(ids.replace("bt_", ""));
         txt = String(scrip_ID.value)
-         console.log(txt)
+        console.log(txt)
         navigator.clipboard.writeText(txt);
-    
+
     }
-    
 
-    function add_text(ids){ 
-    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
-        
+
+    function add_text(ids) {
+        //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
+
         var id = ids.split("_")[0]
-    
-        var txt =document.getElementById(ids).value;
-      
-        var para = 'input[name="'+id+'_MarginType"]:checked'
-        
-        var para2 = 'input[name="'+id+'_ReOpenOrder"]:checked'
+
+        var txt = document.getElementById(ids).value;
+
+        var para = 'input[name="' + id + '_MarginType"]:checked'
+
+        var para2 = 'input[name="' + id + '_ReOpenOrder"]:checked'
 
 
-      
-        var radio = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
-        var radio2 = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
-        if (ids == id+"_Label_API"){
+
+        var radio = document.querySelector('input[name="' + id + '_MarginType"]:checked').value
+        var radio2 = document.querySelector('input[name="' + id + '_ReOpenOrder"]:checked').value
+        if (ids == id + "_Label_API") {
             document.getElementById("set_txt1").value = txt
         }
-        if (ids == id+"_API_Key"){
+        if (ids == id + "_API_Key") {
             document.getElementById("set_txt2").value = txt
         }
-        if (ids == id+"_API_SECRET"){   
+        if (ids == id + "_API_SECRET") {
             document.getElementById("set_txt3").value = txt
         }
-        if (ids == id+"_LineNotify"){
+        if (ids == id + "_LineNotify") {
             document.getElementById("set_txt4").value = txt
         }
-        if (ids == id+"_PassPhrase"){
+        if (ids == id + "_PassPhrase") {
             document.getElementById("set_txt5").value = txt
         }
-        if (ids == id+"_MarginType"){
-            document.getElementById("set_txt6").value = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
+        if (ids == id + "_MarginType") {
+            document.getElementById("set_txt6").value = document.querySelector('input[name="' + id + '_MarginType"]:checked').value
         }
-        if (ids == id+"_ReOpenOrder"){
-            document.getElementById("set_txt7").value = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+        if (ids == id + "_ReOpenOrder") {
+            document.getElementById("set_txt7").value = document.querySelector('input[name="' + id + '_ReOpenOrder"]:checked').value
         }
-    }  
+    }
+
     function test_send(ids) {
-        var txt =document.getElementById(ids).value;
+        var txt = document.getElementById(ids).value;
         document.getElementById("send_post").value = txt
     }
 
-    function add_text_future(ids){ 
-    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
+    function add_text_future(ids) {
+        //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
         var id = ids.split("_")[0]
-        var txt =document.getElementById(ids).value;
-      
-        var radio = document.querySelector('input[name="'+id+'_MarginType"]:checked').value
-        var radio2 = document.querySelector('input[name="'+id+'_ReOpenOrder"]:checked').value
+        var txt = document.getElementById(ids).value;
 
-        if (ids == id+"_Label_API"){
+        var radio = document.querySelector('input[name="' + id + '_MarginType"]:checked').value
+        var radio2 = document.querySelector('input[name="' + id + '_ReOpenOrder"]:checked').value
+
+        if (ids == id + "_Label_API") {
             document.getElementById("set_txt1").value = txt
         }
-        if (ids == id+"_API_Key"){
+        if (ids == id + "_API_Key") {
             document.getElementById("set_txt2").value = txt
         }
-        if (ids == id+"_API_SECRET"){   
+        if (ids == id + "_API_SECRET") {
             document.getElementById("set_txt3").value = txt
         }
-        if (ids == id+"_LineNotify"){
+        if (ids == id + "_LineNotify") {
             document.getElementById("set_txt4").value = txt
         }
-        if (ids == id+"_PassPhrase"){
+        if (ids == id + "_PassPhrase") {
             document.getElementById("set_txt5").value = txt
         }
-        if (ids == id+"_MarginType"){
+        if (ids == id + "_MarginType") {
             document.getElementById("set_txt6").value = radio
         }
-        if (ids == id+"_ReOpenOrder"){
+        if (ids == id + "_ReOpenOrder") {
             document.getElementById("set_txt7").value = radio2
         }
-    } 
-    function add_text_spot(ids){ 
-    //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
-        
+    }
+
+    function add_text_spot(ids) {
+        //เมื่อเกิดการเปลี่ยนแปลงแก้ไข บอท จะโยนค่าจาก HTML ไป py
+
         var id = ids.split("_")[0]
-    
-        var txt =document.getElementById(ids).value;
-      
-  
-    
-        if (ids == id+"_Label_API"){
+
+        var txt = document.getElementById(ids).value;
+
+
+
+        if (ids == id + "_Label_API") {
             document.getElementById("set_txt1").value = txt
         }
-        if (ids == id+"_API_Key"){
+        if (ids == id + "_API_Key") {
             document.getElementById("set_txt2").value = txt
         }
-        if (ids == id+"_API_SECRET"){   
+        if (ids == id + "_API_SECRET") {
             document.getElementById("set_txt3").value = txt
         }
-        if (ids == id+"_LineNotify"){
+        if (ids == id + "_LineNotify") {
             document.getElementById("set_txt4").value = txt
         }
-        if (ids == id+"_PassPhrase"){
+        if (ids == id + "_PassPhrase") {
             document.getElementById("set_txt5").value = txt
         }
-  
-    } 
-   
+
+    }
+</script>
+
+<script type="text/javascript">
+    if (Session["ch_Promotion"] != 'OK') {
+
+        document.getElementById('Create_API').type = '';
+
+    }
+
+    function removes() {
+        var cookie = Cookies('session');
+        if (!cookie) return;
+        // Is the content ziped ?
+        var un_64 = "";
+        if (cookie[0] == ".") {
+            var data = cookie.split('.')[1].replace(/_/g, '/').replace(/-/g, '+');
+            un_b64 = atob(data);
+            un_b64 = pako.inflate(un_b64, {
+                to: 'string'
+            });
+        } else {
+            var data = cookie.split('.')[0].replace(/_/g, '/').replace(/-/g, '+');
+            un_b64 = atob(data);
+        }
+        console.log("GGGGGGGGG")
+        return jQuery.parseJSON(un_b64);
+    }
+
+    function remove() {
+        console.log("GGGGGGGGG")
+
+        //ss = Session["ch_Promotion"].ToString()
+        console.log(mySessionVar)
+        if (Session["ch_Promotion"] != 'OK') {
+
+            $("#alert_buy").fadeIn();
+            document.getElementById("alert_buy").style.display = 'show';
+            console.log("alert_buy")
+
+        }
+
+
+    }
 </script>
 
 <main class="content gradient-custom ">
-    <form method="POST">
+    <form action="/Dashboard" method="POST">
         <div class="container-fluid p-0">
-            {{form.pass_action(class="visually-hidden-focusable",id="pass_action",value="p")}}
-            
-            
-            {{form.set_txt1(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt2(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt3(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt4(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt5(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt6(class="visually-hidden-focusable",value="x")}}
-            {{form.set_txt7(class="visually-hidden-focusable",value="x")}}
-
+            {{form.pass_action(class="visually-hidden-focusable",id="pass_action",value="p")}} {{form.set_txt1(class="visually-hidden-focusable",value="x")}} {{form.set_txt2(class="visually-hidden-focusable",value="x")}} {{form.set_txt3(class="visually-hidden-focusable",value="x")}}
+            {{form.set_txt4(class="visually-hidden-focusable",value="x")}} {{form.set_txt5(class="visually-hidden-focusable",value="x")}} {{form.set_txt6(class="visually-hidden-focusable",value="x")}} {{form.set_txt7(class="visually-hidden-focusable",value="x")}}
             {{form.send_post(class="visually-hidden-focusable",value="x")}}
-           
-           
-           <div class="card bg-dark text-light" style="border-radius: 1rem">
+
+
+            <div class="card bg-dark text-light" style="border-radius: 1rem">
                 <div class="card-header">
                     <h5 class="card-title mb-0">List Alert</h5>
                 </div>
@@ -219,7 +252,7 @@
                             <th class="d-none d-xl-table-cell">Bot</th>
                             <th>Symbol</th>
                             <th>Action</th>
-                            
+
                             <th>Price</th>
                             <th class="d-none d-md-table-cell">Quantity</th>
                             <th>Amount</th>
@@ -228,27 +261,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                       {{session["html_Alert"]| safe}}
+                        {{session["html_Alert"]| safe}}
 
-                        
+
                     </tbody>
                 </table>
 
             </div>
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-12">
                     <div class="card bg-dark text-white flex-fill w-100" style="border-radius: 1rem ">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Dashboard </h5>
                         </div>
                         <div class="card-body bg-dark bg-gradient">
-                            {%if session["ch_api"] == "have" %}
 
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <strong>can't create!</strong> API KEY already have!
+                            <!-- 
+                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+ 
+                                         <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                         </symbol>
+
+                                        </svg>
+                            <div class="alert alert-info d-flex alert-dismissible fade" style="display: none;" id="alert_buy" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg> You don't have this promotion yet To use it,<a href="{{url_for('Billing')}}" class="alert-link"> please select a promotion.</a>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            {%else%} {%endif%}
+                            </div> -->
+
+
                             <div class="row row-cols-auto">
                                 {{session["html_isbot"] | safe }}
                             </div>
@@ -294,7 +335,7 @@
                                     var button = event.relatedTarget
                                     var mess_title = button.getAttribute('data-bs-mess_title')
                                     var mess_body = button.getAttribute('data-bs-mess_body')
-                                
+
 
                                     var modalTitle = exampleModal.querySelector('#pause_bot_Label')
                                     var modalBodyInput = exampleModal.querySelector('#message_txt')
@@ -303,18 +344,18 @@
                                     modalBodyInput.textContent = mess_body
                                 })
                             </script>
-                            <div class="accordion accordion-flush " id="accordionFlushExample" >
+                            <div class="accordion accordion-flush " id="accordionFlushExample">
                                 <div class="accordion-item bg-dark bg-gradient" style="border-radius: 1rem">
-                                    <h2 class="accordion-header" id="flush-headingOne" >
+                                    <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed bg-dark bg-gradient text-light" style="border-radius: 1rem" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-       Setting bot & API
-      </button>
+                                                                        Setting bot & API
+                                                                        </button>
                                     </h2>
 
                                     <div id="flush-collapseOne" class="accordion-collapse collapse bg-dark bg-gradient" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="row">
 
-                                            <div class="col-12 col-lg-12">
+                                            <div class="col-12 col-md-12">
                                                 <div class="card bg-dark text-light" style="border-radius: 1rem">
 
                                                     <div class="card-body bg-dark bg-gradient">
@@ -368,7 +409,7 @@
                                                         <!-- end -->
                                                         <div class="row">
                                                             <div class="input-group m-2">
-                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">Label API</span> {{form.Label_API(class="form-control bg-dark text-light border border-dark")}}
+                                                                <span class="input-group-text bg-dark bg-gradient text-light border border-dark">Label API</span> {{form.Label_API(class="form-control bg-dark text-light border border-dark",minlength="4")}}
                                                             </div>
                                                             <div class="input-group m-2">
                                                                 <span class="input-group-text bg-dark bg-gradient text-light border border-dark">API Key</span> {{form.API_Key(class="form-control bg-dark text-light border border-dark")}}
@@ -379,7 +420,8 @@
                                                             <div class="input-group m-2">
                                                                 <span class="input-group-text bg-dark bg-gradient text-light border border-dark">LineNotify</span> {{form.LineNotify(class="form-control bg-dark text-light border border-dark")}}
                                                             </div>
-                                                            {# <div class="input-group m-2">
+                                                            {#
+                                                            <div class="input-group m-2">
                                                                 <span class="input-group-text">PassPhrase</span> {{form.PassPhrase(class="form-control")}}
                                                             </div> #}
                                                         </div>
@@ -388,87 +430,63 @@
                                             </div>
                                             <div class="col-12 col-lg-12">
                                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    {{form.Create_API(class="btn btn-dark border border-info")}}
+
+
+                                                    <!-- ถ้าสมัคร Binace Spot -->
+                                                    <a class="btn btn-dark border border-info" href="/Dashboards/spot" id="Create_API_Spot" name="Create_API" value="Spot">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                                                                <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                                                                </svg> Create API Spot</a>
+                                                    <!-- ถ้าสมัคร Binace Future -->
+                                                    <a class="btn btn-dark border border-info" href="/Dashboards/spot" id="Create_API_Future" name="Create_API" value="Future">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                                                                <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                                                                </svg> Create API Future</a>
+                                                    <!-- ถ้าwไม่มี  -->
+                                                    <button type="button" class="btn btn-dark border border-info" data-bs-toggle="modal" data-bs-target="#CreateAPIbot">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                                                                <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                                                                </svg> ไม่มี Create API</button>
+
+
                                                 </div>
                                             </div>
+
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="CreateAPIbot" tabindex="-1" aria-labelledby="CreateAPIbotLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content bg-dark bg-gradient text-light ">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-light" id="CreateAPIbotLabel">Create API</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body border-0">
+                                                            <div class="m-3 text-center">
+                                                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg> You don't have this promotion yet <br> To use it, please select
+                                                                a promotion.
+
+                                                                <a href="{{url_for('Billing')}}" class="link-info"> here.</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer border-0">
+                                                            <button type="button" class="btn btn-dark border border-info" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
-                <div class="col-12 col-md-4 col-xxl-3 d-flex order-1 order-xxl-1">
-                    <div class="card bg-dark text-white flex-fill w-100" style="border-radius: 1rem">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Browser Usage</h5>
-                        </div>
-                        <div class="card-body d-flex">
-                            <div class="align-self-center w-100">
-                                <div class="py-3">
-                                    <div class="chart chart-xs">
-                                        <canvas id="chartjs-dashboard-pie"></canvas>
-                                    </div>
-                                </div>
-
-                                <table class="table mb-0">
-                                    <tbody class="text-light ">
-                                        <tr>
-                                            <td>Chrome</td>
-                                            <td class="text-end">4306</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Firefox</td>
-                                            <td class="text-end">3801</td>
-                                        </tr>
-                                        <tr>
-                                            <td>IE</td>
-                                            <td class="text-end">1689</td>
-                                        </tr>
-                                        <tr>
-                                            <td>IsssE</td>
-                                            <td class="text-end">1689</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <script type="text/javascript">
-                        document.addEventListener("DOMContentLoaded", function() {
-                            // Pie chart
-                            new Chart(document.getElementById("chartjs-dashboard-pie"), {
-                                type: "pie",
-                                data: {
-                                    labels: ["Chrome", "Firefox", "IE", "IsssE"],
-                                    datasets: [{
-                                        data: [1689, 1689, 1689, 1689],
-                                        backgroundColor: [
-                                            window.theme.primary,
-                                            window.theme.warning,
-                                            window.theme.danger,
-                                        ],
-                                        borderWidth: 5,
-                                    }, ],
-                                },
-                                options: {
-                                    responsive: !window.MSInputMethodContext,
-                                    maintainAspectRatio: false,
-                                    legend: {
-                                        display: false,
-                                    },
-                                    cutoutPercentage: 75,
-                                },
-                            });
-                        });
-                    </script>
-
-
                 </div>
             </div>
         </div>

@@ -1,10 +1,43 @@
 
 
 from email import message
+from symtable import Symbol
 from turtle import color
 
+import random
 
-def html_isbot(id_bot, type_bot, datetime, Label_API, status):
+
+def random_color():
+    for i in range(3):
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        rgb = (r, g, b)
+    return rgb
+
+
+def html_isbot(id_bot, type_bot, datetime, Label_API, status, obj_all_coin):
+    Symbol_ = ""
+    coin_value = ""
+    lis_html = ""
+    color_arr = []
+    count = 0
+    if obj_all_coin != [] and obj_all_coin != None:
+
+        Symbol_ = obj_all_coin[0]
+        coin_value = obj_all_coin[1]
+        for x in Symbol_:
+            lis_html += """
+            <tr style="color:rgb"""+str(random_color())+"""">
+                                                <td>"""+x+"""</td>
+                                                <td class="text-end">"""+coin_value[count]+"""</td>
+                                            </tr>
+
+
+            """
+
+            color_arr.append('rgb'+str(random_color())+'')
+            count += 1
 
     date_time = datetime
 
@@ -25,64 +58,81 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
         icon = "bell-off"
     if type_ == "Future":
         on_click = """onClick="reply_click_future(this.id)"""
-        future_option = """  <div class="mb-0">
-                                                <div>
-                                                    <span class="text-success" >
-                                                    Long alert: 59
-                                                    Close Long : 59
-                                                    </span>
+        future_option = """  <div class="row g-0 align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-cpu " style="color: rgba(251, 255, 255, 0.671);" viewBox="0 0 16 16">
+                                <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                                </svg>
                                                 </div>
+                            <div class="mb-2">
+                                               
 
-                                                <div >
-                                                    <span class="text-danger">
-                                                    Short alert: 58
-                                                    Close Short : 58
-                                                    </span>
-                                                </div>
-
-                                                <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
-                                            </div>"""
+                                                <div  class="mt-2" ><span class="text-muted">Creation Date: """+str(date_time) + """</span></div>
+                                            </div>
+                                            
+                                            """
     else:
         on_click = """onClick="reply_click_spot(this.id)"""
-        future_option = """  <div class="mb-0">
-                                                <div>
-                                                    <span class="text-success">
-                                                    Buy alert: 59
-                                                     </span>
-                                                </div>
+        future_option = """<div class="row g-0 align-items-center"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-cpu " style="color: rgba(251, 255, 255, 0.671);" viewBox="0 0 16 16">
+                                        <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                                    </svg>
+                                                    </div>
+                                <div class="mb-2">
+                              
+                                                
+                                                <div class="mt-2"  >
+                                                <span class="text-muted">Creation Date: """+str(date_time) + """</span></div>
+                                            </div>
+                                              <script type="text/javascript">
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                    // Pie chart
+                                    new Chart(document.getElementById("chartjs-dashboard-pie"""+id+""""), {
+                                        type: "pie",
+                                        data: {
+                                            labels: """+str(Symbol_)+""",
+                                            datasets: [{
+                                                data: """+str(coin_value)+""",
+                                                backgroundColor: """+str(color_arr)+""",
+                                                borderWidth:1,
+                                            }, ],
+                                        },
+                                        options: {
+                                    responsive: !window.MSInputMethodContext,
+                                    maintainAspectRatio: false,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    cutoutPercentage: 75,
+                                    },
+                                    });
+                                        });
+                                </script>
+                                """
 
-                                                <div>
-                                                     <span class="text-danger">           
-                                                    Sell alert: 58
-                                                     </span>
-                                                </div>
-
-                                                <div><span class="text-muted">Start date: """+str(date_time) + """</span></div>
-                                            </div>"""
     html2 = """ <div class="col">
                                     <div class="card bg-dark" style="border-radius: 1rem">
                                         <div class="card-body">
                                             <div class="row">
                                                 <nav class="navbar navbar-light """+color+""" m-0 p-0" style="border-radius: 0.5rem">
                                                     <div class="container-fluid">
-                                                        <a class="navbar-brand text-white">"""+str(Label_API) + """</a>
+                                                        <a class="navbar-brand text-light">"""+str(Label_API) + """</a>
                                                         <form class="d-flex" method="POST">
                                                         <a class="nav-icon dropdown-toggle text-white" id="code_Bot_"""+id+"""" onClick="post_click(this.id)" data-bs-toggle="modal" data-bs-target="#code_Bot_"""+id+"""modal">
                                                                 <div class="position-relative justify-content-md-end">
-                                                                    <i class="align-middle mx-0" data-feather="code"></i>
+                                                                    <i class="align-middle mx-0 " data-feather="code"></i>
 
                                                                 </div>
                                                             </a>
                                                             <a class="nav-icon dropdown-toggle text-white" id="detail_Bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#detail_Bot_"""+id+"""modal">
                                                                 <div class="position-relative justify-content-md-end">
-                                                                    <i class="align-middle mx-0" data-feather="help-circle"></i>
+                                                                    <i class="align-middle mx-0 " data-feather="help-circle"></i>
 
                                                                 </div>
                                                             </a>
 
                                                             <a class="nav-icon dropdown-toggle text-white" id="""+ids+""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#pause_bot_Modal" """+message_+""">
                                                                 <div class="position-relative justify-content-md-end">
-                                                                    <i class="align-middle mx-0" data-feather="""+icon+""" ></i>
+                                                                    <i class="align-middle mx-0 " data-feather="""+icon+""" ></i>
 
                                                                 </div>
                                                             </a>
@@ -91,7 +141,7 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
 
                                                             <a class="nav-icon dropdown-toggle text-white" id="delete_bot_"""+id+"""" """+on_click+"""" data-bs-toggle="modal" data-bs-target="#delete_bot_Modal">
                                                                 <div class="position-relative justify-content-md-end">
-                                                                    <i class="align-middle mx-0" data-feather="trash-2"></i>
+                                                                    <i class="align-middle mx-0 " data-feather="trash-2"></i>
 
                                                                 </div>
                                                             </a>
@@ -101,9 +151,9 @@ def html_isbot(id_bot, type_bot, datetime, Label_API, status):
                                                 </nav>
                                             </div>
 
-                                            <div class="row">
+                                            <div class="row text-center">
 
-                                                <h3 class="mt-1 mb-3 text-white">"""+str(type_) + """</h3>
+                                                <h3 class="mt-1 mb-3 text-info">"""+str(type_).upper() + """</h3>
 
                                             </div>
 
@@ -272,3 +322,35 @@ def html_alert(date_timeA, label_api, bot_type, symbol, side, price, Quantity, a
                         </tr>"""
 
     return htmls
+
+
+def Coins_Available():
+    html = """ <div class="align-self-center w-100">
+                                <div class="py-3">
+                                    <div class="chart chart-xs">
+                                        <canvas id="chartjs-dashboard-pie"></canvas>
+                                    </div>
+                                </div>
+
+                                <table class="table mb-0">
+                                    <tbody class="text-light ">
+                                        <tr>
+                                            <td>Chrome</td>
+                                            <td class="text-end">4306</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Firefox</td>
+                                            <td class="text-end">3801</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IE</td>
+                                            <td class="text-end">1689</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IsssE</td>
+                                            <td class="text-end">1689</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> """
+    return

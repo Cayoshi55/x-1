@@ -30,16 +30,52 @@
     {# l #}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
+    <style type="text/css">
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #313131;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient( to top, rgb(56, 56, 56), rgba(39, 59, 94));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+            background: linear-gradient( to top, rgb(25, 48, 58), rgb(39, 59, 94));
+        }
+        
+        .gradient-custom_dialog {
+            /* fallback for old browsers */
+            background: #313131;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient( to top, rgba(56, 56, 56, 0.363), rgba(39, 59, 94, 0.377));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+            background: linear-gradient( to top, rgba(25, 48, 58, 0.404), rgba(39, 59, 94, 0.445));
+        }
+        
+        .gradient-custom_promotion {
+            /* fallback for old browsers */
+            background: #313131;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient( to right, rgb(56, 56, 56), rgba(39, 59, 94));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+            background: linear-gradient( to right, rgb(52, 37, 77), rgb(39, 59, 94));
+        }
+    </style>
+
+
+
 </head>
 
 
 <body>
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
-            <div class="sidebar-content js-simplebar bg-dark">
+            <div class="sidebar-content js-simplebar bg-dark ">
 
 
-                <span class="align-middle "><img src="static/img/LG2.png" class="img-fluid d-block" style="width: 300px;" alt="sss" /></span>
+                <span class="align-middle m-4"><img src="static/img/LG2.png" class="img-fluid d-block" style="width: 300px;" alt="sss" /></span>
 
 
 
@@ -55,15 +91,17 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link bg-dark" href="{{url_for('profile')}}">
-                            <i class="align-middle" data-feather="user"></i>
-                            <span class="align-middle">Profile</span>
+                        <a class="sidebar-link bg-dark" href="{{url_for('Billing')}}">
+                            <i class="align-middle" data-feather="credit-card"></i>
+                            <span class="align-middle">Billing</span>
                         </a>
                     </li>
+                   
             </div>
         </nav>
 
         <div class="main">
+
             <nav class="navbar navbar-expand navbar-dark bg-dark">
 
                 <a class="sidebar-toggle js-sidebar-toggle">
@@ -225,23 +263,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="{{url_for('profile')}}"><i class="align-middle me-1" data-feather="user"></i>
-                  Profile</a
-                >
-                <a class="dropdown-item" href="#"
-                  ><i class="align-middle me-1" data-feather="pie-chart"></i>
-                  Analytics</a
-                >
+                  Profile</a>
+                 
+                <a class="dropdown-item" href="#">  <a class="dropdown-item" href="{{url_for('about')}}"><i class="align-middle" data-feather="info"></i>
+                  about</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('login')}}"
-                  ><i class="align-middle me-1" data-feather="settings"></i>
-                  Settings & Privacy</a
-                >
-                {# <a class="dropdown-item" href="#"
-                  ><i class="align-middle me-1" data-feather="help-circle"></i>
-                  Help Center</a
-                > #}
-                
-                <div class="dropdown-divider"></div>
+           
+       
                
                
                 <a class="dropdown-item" href="{{url_for('logout')}}">Log out</a>

@@ -1,0 +1,564 @@
+{% extends "layout_index.html" %} {% block content %}
+
+
+
+<main class="content  gradient-custom ">
+    <form action="/Billing" method="POST">
+        <div class="container-fluid p-0 align-content-end">
+
+            <div class="mb-3">
+                <div class="col-md-3 col-md-12">
+                    <!-- Button trigger modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Modal -->
+                                    <div class="modal-body">
+                                        <h5>Popover in a modal</h5>
+                                        <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+                                        <hr>
+                                        <h5>Tooltips in a modal</h5>
+                                        <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var myModal = document.getElementById('myModal')
+                        var myInput = document.getElementById('myInput')
+
+                        myModal.addEventListener('shown.bs.modal', function() {
+                            myInput.focus()
+                        })
+                    </script>
+                    <div class="card bg-dark text-light" style="border-radius: 1rem" id="card_demo">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0 text-uppercase">Package Promotion</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 col-xl-3">
+                                    <div class="card text-center gradient-custom_promotion" style="height: 330px;">
+
+                                        <span class="fs-4 text-light m-3">1 Month</span>
+
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col " style="height: 50px;">
+                                                    <span class="fs-5 text-light">free</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.exchange(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.spot_future(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {# {{form.buy_demo(class="btn btn-primary" )}} #}
+                                                    <button type="button" class="btn btn-primary border-0" style="border-radius: 1rem" data-bs-toggle="modal" id="getBuy_Demo" data-bs-target="#Buy_Demo">
+Demo
+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-3">
+                                    <div class="card text-center gradient-custom_promotion" style="height: 330px;" id="card_1M">
+                                        <span class="fs-4 text-light m-3">1 Month</span>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col " style="height: 50px;">
+                                                    <span class="fs-5 text-light">99 THB </span>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.exchange(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.spot_future(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    <button type="button" class="btn btn-primary border-0" style="border-radius: 1rem" id="getBuy_1M" data-bs-toggle="modal" data-bs-target="#Buy_1M">
+BUY 1 Month
+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-3">
+                                    <div class="card text-center gradient-custom_promotion" style="height: 330px;" id="card_3M">
+                                        <span class="fs-4 text-light m-3">3 Month</span>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col " style="height: 50px;">
+                                                    <span class="fs-5 text-light"> -3% <br>288 THB </span>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.exchange(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.spot_future(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    <button type="button" class="btn btn-primary border-0" style="border-radius: 1rem" id="getBuy_3M" data-bs-toggle="modal" data-bs-target="#Buy_3M">
+BUY 3 Month
+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-3">
+                                    <div class="card text-center gradient-custom_promotion" style="height: 330px;" id="card_12M">
+                                        <span class="fs-4 text-light m-3">12 Month</span>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col" style="height: 50px;">
+                                                    <span class="fs-5 text-light"> -15% <br>1,010 THB </span>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.exchange(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    {{form.spot_future(class="form-select bg-dark text-light border border-dark")}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="text-center">
+                                                    <button type="button" class="btn btn-primary border-0" style="border-radius: 1rem" id="getBuy_12M" data-bs-toggle="modal" data-bs-target="#Buy_12M">
+BUY 12 Month
+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- {{form.buy_demo(class="visually-hidden-focusable",value="p")}} -->
+                {{form.buy_demo(class="",value="p")}}
+                <script>
+                    String.prototype.hashCode = function() {
+                        var hash = 0,
+                            i, chr;
+                        if (this.length === 0) return hash;
+                        for (i = 0; i < this.length; i++) {
+                            chr = this.charCodeAt(i);
+                            hash = ((hash << 5) - hash) + chr;
+                            hash |= 0; // Convert to 32bit integer
+                        }
+                        return hash;
+                    };
+
+                    document.getElementById("getBuy_Demo").onclick = function() {
+                        getdataDemo()
+                    };
+
+                    function getdataDemo() {
+                        var excha = document.querySelector("#card_demo [name=exchange]").value
+                        var type_ = document.querySelector("#card_demo [name=spot_future]").value
+                        document.getElementById("buy_demo").value = excha
+
+                        // Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing 
+                        document.getElementById("conf_demo").href = "/Billing/demo" + excha + " " + type_ + "/" + excha + "/" + type_ + "/0/checking/transfer";
+
+                    }
+
+                    document.getElementById("getBuy_1M").onclick = function() {
+                        getBuy_1M()
+                    };
+                    document.getElementById("getBuy_3M").onclick = function() {
+                        getBuy_3M()
+                    };
+                    document.getElementById("getBuy_12M").onclick = function() {
+                        getBuy_12M()
+                    };
+
+                    function getBuy_1M() {
+                        var excha = document.querySelector("#card_1M [name=exchange]").value
+                        var type_ = document.querySelector("#card_1M [name=spot_future]").value
+                            // Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing 
+                        document.getElementById("conf_1M").href = "/Billing/" + excha + " " + type_ + " 1Month/" + excha + "/" + type_ + "/0/checking/transfer";
+
+                    }
+
+                    function getBuy_3M() {
+                        var excha = document.querySelector("#card_3M [name=exchange]").value
+                        var type_ = document.querySelector("#card_3M [name=spot_future]").value
+                            // Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing 
+                        document.getElementById("conf_3M").href = "/Billing/" + excha + " " + type_ + " 3Month/" + excha + "/" + type_ + "/0/checking/transfer";
+
+                    }
+
+                    function getBuy_12M() {
+                        var excha = document.querySelector("#card_12M [name=exchange]").value
+                        var type_ = document.querySelector("#card_12M [name=spot_future]").value
+                            // Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing 
+                        document.getElementById("conf_12M").href = "/Billing/" + excha + " " + type_ + " 12Month/" + excha + "/" + type_ + "/0/checking/transfer";
+
+                    }
+                </script>
+
+                <!-- Modal Demo-->
+                <div class="modal fade gradient-custom_dialog" id="Buy_Demo" tabindex="-1" aria-labelledby="Buy_Demo_L" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark bg-gradient text-light ">
+                            <div class="modal-header">
+                                <span class="align-middle m-0">
+                                <img src="static/img/LG2.png" class="img-fluid d-block" style="width: 100px;" alt="sss" /></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0">
+                                <table class="ml-3">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="border-bottom align-baseline">
+                                                แผน Demo 1 เดือน
+                                            </td>
+                                            <td class="border-bottom text-end">
+                                                เป็นเวลา 30 วัน
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                ยอดที่ต้องชำระ
+                                            </td>
+                                            <td class="text-end">
+                                                0 THB
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                <br> จะมีผลหลังจาก Upload slip และรอ admin ยืนยัน
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="modal-footer border-0">
+
+                                <a class="btn btn-dark border border-info" type="submit" id="conf_demo">ยืนยันการสั่งซื้อ</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal 1-->
+
+                <div class="modal fade gradient-custom_dialog" id="Buy_1M" tabindex="-1" aria-labelledby="Buy_1M_L" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark bg-gradient text-light ">
+                            <div class="modal-header">
+                                <span class="align-middle m-0">
+                                <img src="static/img/LG2.png" class="img-fluid d-block" style="width: 100px;" alt="sss" /></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0">
+                                <div class="m-3 ">
+                                    <table class="ml-3">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" class="border-bottom align-baseline">
+                                                    แผน 1 เดือน
+                                                </td>
+                                                <td class="border-bottom text-end">
+                                                    เป็นเวลา 30 วัน
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class=" align-baseline">
+                                                    ยอดที่ต้องชำระ
+                                                </td>
+                                                <td class="text-end">
+                                                    99 THB
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class=" align-baseline">
+                                                    <br> จะมีผลหลังจาก Upload slip และรอ admin ยืนยัน
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <a class="btn btn-dark border border-info" id="conf_1M">ยืนยันการสั่งซื้อ</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal 2-->
+                <div class="modal fade gradient-custom_dialog" id="Buy_3M" tabindex="-1" aria-labelledby="Buy_3M_L" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark bg-gradient text-light ">
+                            <div class="modal-header">
+                                <span class="align-middle m-0">
+                                <img src="static/img/LG2.png" class="img-fluid d-block" style="width: 100px;" alt="sss" /></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0">
+
+                                <table class="ml-3">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="border-bottom align-baseline">
+                                                แผน 3 เดือน
+                                            </td>
+                                            <td class="border-bottom text-end">
+                                                เป็นเวลา 90 วัน
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                ยอดที่ต้องชำระ
+                                            </td>
+                                            <td class="text-end">
+                                                288 THB
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                <br> จะมีผลหลังจาก Upload slip และรอ admin ยืนยัน
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="modal-footer border-0">
+                                <a class="btn btn-dark border border-info" id="conf_3M">ยืนยันการสั่งซื้อ</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal 3-->
+                <div class="modal fade gradient-custom_dialog" id="Buy_12M" tabindex="-1" aria-labelledby="Buy_12M_L" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark bg-gradient text-light ">
+                            <div class="modal-header">
+                                <span class="align-middle m-0">
+                                <img src="static/img/LG2.png" class="img-fluid d-block" style="width: 100px;" alt="sss" /></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0">
+
+                                <table class="ml-3">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="border-bottom align-baseline">
+                                                แผน 12 เดือน
+                                            </td>
+                                            <td class="border-bottom text-end">
+                                                เป็นเวลา 365 วัน
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                ยอดที่ต้องชำระ
+                                            </td>
+                                            <td class="text-end">
+                                                1,010 THB
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class=" align-baseline">
+                                                <br> จะมีผลหลังจาก Upload slip และรอ admin ยืนยัน
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="modal-footer border-0">
+                                <a class="btn btn-dark border border-info" id="conf_12M">ยืนยันการสั่งซื้อ</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-md-12">
+                        <div class="card text-center bg-dark text-light" style="border-radius: 1rem">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0 text-uppercase">My Package</h5>
+                            </div>
+                            <div class="card-body ">
+                                <div class="row">
+                                    <table class="table table-hover my-0 text-light ">
+                                        <thead>
+                                            <tr>
+                                                <th class="d-none d-md-table-cell">Date</th>
+                                                <th>Current plan</th>
+                                                <th class="d-none d-md-table-cell">Price</th>
+                                                <th>Expire</th>
+                                                <th class="d-none d-md-table-cell">Type billing</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">17/04/2022</td>
+                                                <td>Binnace Spot 12 Month</td>
+                                                <td class="d-none d-md-table-cell">18$</td>
+                                                <td>17/04/2023</td>
+                                                <td class="d-none d-md-table-cell">transfer Promptpay</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">08/04/2022</td>
+                                                <td>Binnace Future 12 Month</td>
+                                                <td class="d-none d-md-table-cell">18$</td>
+                                                <td>08/04/2023</td>
+                                                <td class="d-none d-md-table-cell">transfer Promptpay</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card text-center bg-dark text-light" style="border-radius: 1rem">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0 text-uppercase">BILLING HISTORY</h5>
+                            </div>
+                            <div class="card-body ">
+                                <div class="row">
+                                    <table class="table table-hover my-0 text-light">
+                                        <thead>
+                                            <tr>
+                                                <th class="d-none d-md-table-cell">Date</th>
+                                                <th>Current plan</th>
+                                                <th class="d-none d-md-table-cell">Price</th>
+                                                <th>Status</th>
+                                                <th>upload</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">17/04/2022</td>
+                                                <td>Binnace Spot 12 Month</td>
+                                                <td class="d-none d-md-table-cell">18$</td>
+                                                <td>checking</td>
+                                                <td>
+
+
+                                                    <input type="file" class="form-control">
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">08/04/2022</td>
+                                                <td>Binnace Future 12 Month</td>
+                                                <td class="d-none d-md-table-cell">18$</td>
+                                                <td>successful</td>
+                                                <td class="d-none d-md-table-cell">
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </form>
+</main>
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row text-muted">
+            <div class="col-6 text-start">
+                <p class="mb-0">
+                    <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> &copy;
+                </p>
+            </div>
+            <div class="col-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+
+
+</div>
+
+<script src="static/js/app.js"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

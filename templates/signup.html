@@ -9,8 +9,29 @@
     12+, Safari 7+ */
         background: linear-gradient(to right, rgb(27, 27, 27), rgba(37, 117, 252, 1))
     }
+    
 </style>
-
+<script>
+function keyDown(e) { 
+    var e = window.event || e;
+    var key = e.keyCode;
+    //space pressed
+    if (key == 32) { //space
+        e.preventDefault();
+    }
+}
+function checkWhitespace(event)
+{
+	var data = event.clipboardData.getData("text/plain");
+    var isNullOrContainsWhitespace = (!data || data.length === 0 || /\s/g.test(data));
+  
+    if(isNullOrContainsWhitespace)
+    {
+  	  event.preventDefault(); 
+    }
+  
+}
+</script>
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -24,32 +45,32 @@
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                                 <div class="form-outline form-white mb-4">
-                                    {% if name == "" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID")}}
+                                    {% if name == "" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID",onkeydown="keyDown(event)",minlength="4",onpaste="checkWhitespace(event)")}}
                                     <div class="invalid-feedback">
                                         Enter UserID
                                     </div>
 
-                                    {% elif name == "user_already" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID")}}
+                                    {% elif name == "user_already" %} {{form.Regis_UserID(class="form-control is-invalid form-control-lg",placeholder="User ID",onkeydown="keyDown(event)",minlength="4",onpaste="checkWhitespace(event)")}}
                                     <div class="invalid-feedback">
                                         This username already exists.
                                     </div>
 
 
-                                    {%else%} {{form.Regis_UserID(class="form-control form-control-lg",placeholder="User ID")}} {%endif%}
+                                    {%else%} {{form.Regis_UserID(class="form-control form-control-lg",placeholder="User ID",onkeydown="keyDown(event)",minlength="4",onpaste="checkWhitespace(event)")}} {%endif%}
 
 
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    {% if email == "" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",placeholder="Email")}}
+                                    {% if email == "" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",type="email",placeholder="Email",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}}
                                     <div class="invalid-feedback">
                                         Enter Email
                                     </div>
-                                    {% elif email == "Email_already" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",placeholder="Email")}}
+                                    {% elif email == "Email_already" %} {{form.Regis_UserEmail(class="form-control is-invalid form-control-lg",type="email",placeholder="Email",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}}
                                     <div class="invalid-feedback">
                                         This Email already exists.
                                     </div>
 
-                                    {% else %} {{form.Regis_UserEmail(class="form-control form-control-lg",placeholder="Email")}} {%endif%}
+                                    {% else %} {{form.Regis_UserEmail(class="form-control form-control-lg",type="email",placeholder="Email",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}} {%endif%}
                                 </div>
 
 
@@ -61,7 +82,7 @@
 
                                     {% if passlogin == "" %}
                                     <div class="input-group has-validation">
-                                        {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                        {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",minlength="6",placeholder="Password",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}}
                                         <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword1" 
                                                         style="cursor: pointer"></i>
@@ -74,7 +95,7 @@
                                         {% elif passlogin == "len5" %}
 
                                         <div class="input-group has-validation">
-                                            {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                            {{form.Regis_User_Password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password1",type="password",minlength="6",placeholder="Password",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}}
                                             <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword1" 
                                                         style="cursor: pointer"></i>
@@ -86,7 +107,7 @@
                                         {%else%}
 
                                         <div class="input-group has-validation">
-                                            {{form.Regis_User_Password(class="input-group-text form-control text-start form-control-lg ",id="password1",type="password",placeholder="Password")}}
+                                            {{form.Regis_User_Password(class="input-group-text form-control text-start form-control-lg ",id="password1",type="password",placeholder="Password",minlength="6",onkeydown="keyDown(event)",onpaste="checkWhitespace(event)")}}
                                             <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword1" 
                                                         style="cursor: pointer"></i>
@@ -102,7 +123,7 @@
 
                                         {% if Retype_password == "" %}
                                         <div class="input-group has-validation">
-                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg",id="password",type="password",placeholder="Retype password")}}
+                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg",id="password",type="password",minlength="6",placeholder="Retype password")}}
                                             <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword" 
                                                         style="cursor: pointer"></i>
@@ -115,7 +136,7 @@
                                         {% elif Retype_password == "dontmatch" %}
 
                                         <div class="input-group has-validation">
-                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password",type="password",placeholder="Password")}}
+                                            {{form.Retype_password(class="input-group-text text-start form-control is-invalid form-control-lg ",id="password",type="password",minlength="6",placeholder="Password")}}
                                             <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword" 
                                                         style="cursor: pointer"></i>
@@ -127,7 +148,7 @@
                                         {%else%}
 
                                         <div class="input-group has-validation">
-                                            {{form.Retype_password(class="input-group-text text-start form-control form-control-lg",id="password",type="password",placeholder="Retype password")}}
+                                            {{form.Retype_password(class="input-group-text text-start form-control form-control-lg",id="password",type="password",minlength="6",placeholder="Retype password")}}
                                             <span class="input-group-text">
                                                          <i class="far fa-eye-slash" id="togglePassword" 
                                                         style="cursor: pointer"></i>

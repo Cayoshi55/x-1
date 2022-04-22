@@ -1,15 +1,17 @@
 
+
 from datetime import timedelta
 from distutils.errors import PreprocessError
 from operator import truediv
 import os
 import string
-
+from time import process_time_ns
+from datetime import datetime, date
 from tkinter.tix import Tree
 from itsdangerous import TimedSerializer, TimestampSigner
 # from distutils.text_file import TextFile
 from wsgiref.validate import validator
-from flask import Flask, flash, render_template, request, session, redirect, url_for, escape
+from flask import Flask, flash, render_template, request, session, redirect, url_for, escape, jsonify
 import flask
 from flask_session import Session
 from flask_wtf import FlaskForm  # ซ่อมการทำงาน HTML
@@ -31,8 +33,14 @@ import socket
 import sys
 import uuid
 import json
+from pprint import pprint
+import cgi
 
+from subprocess import Popen, PIPE
+import re
 
+form = cgi.FieldStorage()
+searchterm = form.getvalue('searchbox')
 #app = Flask(__name__, static_url_path='/static')
 app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = 'mykeysss'
@@ -91,12 +99,25 @@ def logout():
     return redirect("/login")
 
 
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    hostname = socket.gethostname()
+
+    IP = request.remote_addr
+    stri = IP+' <br> '+' \n 192.168.43.94'
+    return stri
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     form = class_User.MyfromLogin()
     User_login = form.UserID.data
     Pass_login = form.User_Password.data
 
+    hostname = socket.gethostname()
+    #ip = socket.gethostbyname(hostname)
+    ip = request.remote_addr
     try:
         if session["UserID"]:
             return redirect("/")
@@ -118,6 +139,7 @@ def login():
 
                         # ตัวเช็ก การเข้าใช้อยู่มั้ย
                         session["UserID"] = form.UserID.data
+                        fu_Mysql.User_Login_IP(User_login, ip, hostname)
                         session.permanent = True
 
                         session["is_math_Password"] = ""
@@ -139,34 +161,88 @@ def login():
     return render_template("login.html", form=form, name=User_login, passlogin=Pass_login)
 
 
+@app.route("/about", methods=["GET"])
+def about():
+
+    return render_template("about.html")
+
+
+@app.route("/Dashboards/<string:info>", methods=["GET"])
+def Dashboards(info):
+    print('*****************[info]************************')
+    print(info)
+    u_id = session["UserID"]
+    data_User = fu_Mysql.User_select_Promo(u_id)
+    date_ex = ""
+    botdata_type = ""
+    if data_User != []:
+        try:
+            bot_type = info
+
+            for data in data_User:
+                try:
+                    date_ex = data[6]
+                    botdata_type = data[4]
+                except:
+                    session["ch_Promotion"] = 'isBuy'
+                ExpirationDate = datetime.strptime(date_ex, "%Y-%m-%d").date()
+                now = date.today()
+                if ExpirationDate >= now and bot_type == botdata_type:
+                    session["ch_Promotion"] = 'OK'
+                    Label_API = request.form['Label_API']
+                    API_Key = request.form['API_Key']
+                    API_SECRET = request.form['API_SECRET']
+                    LineNotify = request.form['LineNotify']
+                    MarginType = request.form['MarginType']
+                    ReOpenOrder = request.form['ReOpenOrder']
+                    uuids = str(uuid.uuid4())
+                    PassPhrase = uuid.uuid5(
+                        uuid.NAMESPACE_DNS, session["UserID"]+bot_type+uuid)
+                    fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
+                                        MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
+                    return redirect("/Dashboard")
+
+                else:
+                    session["ch_Promotion"] = 'isBuy'
+                    return redirect("/Dashboard")
+        except:
+            session["ch_Promotion"] = 'isBuy'
+            return redirect("/Dashboard")
+
+    return ""  # redirect("/Dashboard")
+
+
+def count_page(u_id):
+
+    cpunt_data = fu_Mysql.User_select_login(u_id, '')[0][5]
+
+    if cpunt_data != '' and cpunt_data != None:
+        count = int(cpunt_data) + 1
+        fu_Mysql.User_Count_Page(u_id,  str(count))
+    else:
+        count = 1
+        fu_Mysql.User_Count_Page(u_id,  str(count))
+
+
 @app.route("/Dashboard", methods=["GET", "POST"])
 def Dashboard():
-
-    hostname = socket.gethostname()
-    ip = socket.gethostbyname(hostname)
-    print(hostname)
-    print(ip)
+    print('*****************[info 888]************************')
 
     form_dashb = class_form_index.form_Dashboard()
     if check_UserID():
         return redirect("/login")
-
-    session['playlist_id'] = ""
     u_id = session["UserID"]
-
+    count_page(u_id)
     data = fu_Mysql.API_select(u_id, "", "")
     data_alert = fu_Mysql.Alert_select(u_id, '', '', '', '')
-    htmls = ""
-    html_m = ""
-
     session["ch_api"] = ""
     delete = form_dashb.delete.data
     pause = form_dashb.pause.data
-
     Create_API = form_dashb.Create_API.data
     pass_action = form_dashb.pass_action.data
-
     send_post = form_dashb.send_post.data
+    bot_type = form_dashb.to0X8sp765598as00zo23.data
+
     if request.method == "POST":
 
         if pause:
@@ -200,39 +276,49 @@ def Dashboard():
             MarginType = form_dashb.set_txt6.data
             ReOpenOrder = form_dashb.set_txt7.data
 
-            check_apikey = fu_Mysql.API_select("", "", API_Key)
-            if check_apikey != []:
-                session["ch_api"] = "have"
-
             fu_Mysql.API_Update(id, Label_API, API_Key, API_SECRET, LineNotify,
                                 PassPhrase, MarginType, ReOpenOrder)
             return redirect("/Dashboard")
 
-        if Create_API:
-
-            bot_type = form_dashb.to0X8sp765598as00zo23.data
-            Label_API = form_dashb.Label_API.data
-            API_Key = form_dashb.API_Key.data
-            API_SECRET = form_dashb.API_SECRET.data
-            LineNotify = form_dashb.LineNotify.data
-            #PassPhrase = form_dashb.PassPhrase.data
-            MarginType = form_dashb.MarginType.data
-            ReOpenOrder = form_dashb.ReOpenOrder.data
-
-            uuids = str(uuid.uuid4())
-            PassPhrase = uuid.uuid5(
-                uuid.NAMESPACE_DNS, session["UserID"]+bot_type+uuids)
-
-            check_apikey = fu_Mysql.API_select("", "", API_Key)
-            if check_apikey != []:
-                session["ch_api"] = "have"
-
-            else:
-
-                fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
-                                    MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
-                return redirect("/Dashboard")
-
+        # if Create_API:
+#
+        #    data_User = fu_Mysql.User_select_Promo(u_id)
+        #    date_ex = ""
+        #    botdata_type = ""
+        #    if data_User != []:
+        #        try:
+        #            for data in data_User:
+        #                try:
+        #                    date_ex = data[6]
+        #                    botdata_type = data[4]
+        #                except:
+        #                    session["ch_Promotion"] = 'isBuy'
+        #                ExpirationDate = datetime.strptime(
+        #                    date_ex, "%Y-%m-%d").date()
+        #                now = date.today()
+        #                if ExpirationDate >= now and bot_type == botdata_type:
+        #                    session["ch_Promotion"] = 'OK'
+        #                    Label_API = form_dashb.Label_API.data
+        #                    API_Key = form_dashb.API_Key.data
+        #                    API_SECRET = form_dashb.API_SECRET.data
+        #                    LineNotify = form_dashb.LineNotify.data
+        #                    MarginType = form_dashb.MarginType.data
+        #                    ReOpenOrder = form_dashb.ReOpenOrder.data
+#
+        #                    uuids = str(uuid.uuid4())
+        #                    PassPhrase = uuid.uuid5(
+        #                        uuid.NAMESPACE_DNS, session["UserID"]+bot_type+uuids)
+#
+        #                    fu_Mysql.API_insert(u_id, API_Key, API_SECRET, LineNotify, PassPhrase,
+        #                                        MarginType, ReOpenOrder, "", Label_API, bot_type, "stop")
+        #                    return redirect("/Dashboard")
+#
+        #                else:
+        #                    session["ch_Promotion"] = 'isBuy'
+        #                    return redirect("/Dashboard")
+        #        except:
+        #            session["ch_Promotion"] = 'isBuy'
+        #            return redirect("/Dashboard")
     if data_alert != []:
         html_Alert = ""
         for x in data_alert:
@@ -243,11 +329,19 @@ def Dashboard():
             session["html_Alert"] = html_Alert
     else:
         session["html_Alert"] = ""
+
     if data != []:
-
+        htmls = ""
+        html_m = ""
+        html_Coins_Available = ""
         for x in data:
+            try:
+                data_All_Coins = Bot_Spot.Show_All_Coins_Available(x[2], x[3])
 
-            htmls += class_html.html_isbot(x[0], x[11], x[9], x[10], x[12])
+            except:
+                return print("Data : don't find all coin")
+            htmls += class_html.html_isbot(x[0], x[11],
+                                           x[9], x[10], x[12], data_All_Coins)
             html_m += class_html.html_modal(
                 x[0], x[11], x[6], x[7], x[10], x[2], x[3], x[4], x[5])
             session["html_isbot"] = htmls
@@ -258,6 +352,42 @@ def Dashboard():
         session["html_isbot"] = ""
 
     return render_template("Dashboard.html", form=form_dashb)
+
+
+@app.route("/test2", methods=["GET", "POST"])
+def test2():
+    print("ACTION")
+    pass
+
+
+@app.route("/TEST", methods=["GET", "POST"])
+def test():
+    forms = class_User.test_()
+    u_id = session["UserID"]
+
+    data = fu_Mysql.API_select(u_id, "", "")
+    if data != []:
+        htmls = ""
+        html_m = ""
+        html_Coins_Available = ""
+        for x in data:
+            try:
+                # Bot_Spot.Show_All_Coins_Available(x[2], x[3])
+                data_All_Coins = ["", ""]
+
+            except:
+                return print("Data : don't find all coin")
+            htmls += class_html.html_isbot(x[0], x[11],
+                                           x[9], x[10], x[12], data_All_Coins)
+            html_m += class_html.html_modal(
+                x[0], x[11], x[6], x[7], x[10], x[2], x[3], x[4], x[5])
+            session["html_isbot"] = htmls
+            session["html_modal"] = html_m
+
+    else:
+        session["html_modal"] = ""
+        session["html_isbot"] = ""
+    return render_template("TEST.html", form=forms)
 
 
 @app.route("/singup", methods=["GET", "POST"])
@@ -271,9 +401,16 @@ def singup():
     countPass = 0
 
     if request.method == "POST":
-        data = fu_Mysql.User_select_login("nateeron", "")
-        user_indata = data[0][1]
-        email_data = data[0][2]
+
+        data = fu_Mysql.User_select_login(User_login, "")
+        print(data)
+        user_indata = ''
+        email_data = ''
+        try:
+            user_indata = data[0][1]
+            email_data = data[0][2]
+        except:
+            pass
 
         if Pass_login:  # != "" and Pass_login != None:
             countPass = len(Pass_login)
@@ -326,6 +463,40 @@ def register():
     return render_template("login.html", form=form)
 
 
+@app.route("/Billing/<string:Promotion_name>/<string:Bot_exchange>/<string:Bot_Type>/<string:Pro_price>/<string:Pro_status>/<string:Type_billing>", methods=["GET", "POST"])
+def Billings(Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing):
+
+    u_id = session["UserID"]
+    ch_demo = fu_Mysql.User_select_Promo(u_id)
+    forms = class_User.Billing_s()
+    x = Promotion_name
+    try:
+        print("*******11****[print(pos)]************")
+        print(request.method)
+        pos = request.args.get("buy_demo")  # forms.buy_demo.data
+        print("***********[print(pos)]************")
+        print(pos)
+    except:
+        return redirect("/Billing")
+    # if ch_demo != 'demoSpot':
+    #    if x == 'demoSpot' or x == 'Binace Spot 1Month' or x == 'Binace Spot 3Month' or x == 'Binace Spot 12Month' or x == 'Binace Future 1Month':
+    #        fu_Mysql.User_insert_Promo(
+    #            u_id, Promotion_name, Bot_exchange, Bot_Type,  Pro_price, Pro_status, Type_billing)
+
+    return redirect("/Billing")
+
+
+@app.route("/Billing", methods=["GET", "POST"])
+def Billing():
+    forms = class_User.Billing_s()
+    if check_UserID():  # session["UserID"] == None or session["UserID"] == '':
+        return redirect("/login")
+    if request.method == "POST":
+        pass
+
+    return render_template("Billing.html", form=forms)
+
+
 #############################################################################################################
 # Reset Password
 #############################################################################################################
@@ -343,12 +514,6 @@ def validate_password_reset_token(token):
     signer = TimestampSigner(app.config["SECRET_KEY"])
 
     return signer.unsign(token, max_age=1000)  # 300 = 5 นาที
-
-
-@app.route("/test", methods=["GET", "POST"])
-def test():
-    form = class_User.ResetNewPassword()
-    return render_template("send_resetPass.html", form=form)
 
 
 ##################[ Send Mail ]###############

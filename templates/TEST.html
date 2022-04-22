@@ -1,0 +1,71 @@
+{% extends "layout.html" %} {% block content %}
+<style type="text/css">
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #313131;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(
+      to right,
+      rgb(56, 56, 56),
+      rgba(37, 117, 252, 1)
+    );
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera
+    12+, Safari 7+ */
+    background: linear-gradient(
+      to right,
+      rgb(27, 27, 27),
+      rgba(37, 117, 252, 1)
+    );
+  }
+</style>
+
+<section class="gradient-custom">
+  <div class="container h-100">
+    <div class="row justify-content-top">
+      <div class="col-12 col-md-6 m-0 p-0">
+        <div class="card bg-dark text-white" style="border-radius: 1rem">
+          <div class="card-body text-center">
+            <h1 class="text-white-50">TEST DATA</h1>
+            <h6 class="text-white-50">{{session['DATA_TEST']}}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 m-0 p-0">
+        <div class="card bg-dark text-white" style="border-radius: 1rem">
+          <div class="card-body text-center">
+            <h1 class="text-white-50">TEST DATA</h1>
+            {{form.send_Submit(href="{{url_for('login')}}")}}
+            <a class="sidebar-link bg-dark" href="{{url_for('test2')}}">
+              <i class="align-middle" data-feather="user"></i>
+              <span class="align-middle">Profile</span>
+            </a>
+            <form name="search" action="/cgi-bin/test.py" method="get">
+              Search: <input type="text" name="searchbox" />
+              <input type="submit" value="Submit" />
+            </form>
+            <h6 class="text-white-50">{{session['DATA_TEST2']}}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+    togglePassword.addEventListener("mouseover", function () {
+      password.setAttribute("type", "text");
+
+      this.classList.toggle("fa-eye");
+      this.classList.toggle("fa-eye-slash");
+    });
+
+    togglePassword.addEventListener("mouseout", function () {
+      password.setAttribute("type", "password");
+
+      this.classList.toggle("fa-eye");
+      this.classList.toggle("fa-eye-slash");
+    });
+  </script>
+</section>
+
+{% endblock %}

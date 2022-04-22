@@ -1,5 +1,3 @@
-
-
 from builtins import float
 import ccxt
 import json
@@ -8,15 +6,11 @@ from colorama import init
 from configparser import ConfigParser
 from pprint import pprint
 from line_notify import LineNotify
-from flask import Flask, request, session
+from flask import Flask, request
 import socket
 import glob
 #####
 import sys
-from mysql.connector import errorcode
-
-#################################
-import fu_Mysql
 
 
 print(sys.path)
@@ -26,6 +20,11 @@ app = Flask(__name__)
 config = ConfigParser()
 
 
+print(Fore.CYAN + '======================================================================')
+print('==                         [ Cayoshi BOT ]                          ==')
+print('==                Tradingview BINACE SPOT V.1.2.65                  ==')
+print('==                         Line : nateeron                          ==')
+print('======================================================================')
 hostname = socket.gethostname()
 print(Fore.YELLOW+'TradingView Web hook to >>>>[ http://'+socket.gethostbyname(
     hostname)+':80/Cayoshibot'+Fore.YELLOW+' ]<<<<<<<<')
@@ -40,8 +39,6 @@ API_error_Send_line = configs['Config_Bot']['API_error_Send_line']
 LineNotify_Test = configs['Config_Bot']['LineNotify_Test']
 ################################################################################################################################################
 
-
-#######################################
 
 text_files = glob.glob("*.ini")
 
@@ -69,16 +66,9 @@ def hello_world():
     return 'Cayoshi Bot'
 
 
-def Alert_error(e):
-
-    return print(e)
-# @app.route("/Cayoshibot", methods=["POST"])
-
-
+@app.route("/Cayoshibot", methods=["POST"])
 def CayoshiM():
-    userID = session["UserID"]
-    data_API = fu_Mysql.API_select(userID, "")
-    print(data_API)
+
     if Bot_RUNTEST == 'on':
         print(Fore.CYAN+'Running............' +
               Fore.RED+'TEST'+Fore.CYAN+'.............')
@@ -102,10 +92,8 @@ def CayoshiM():
     API_SECRET = ''
     ifFailed = 0
     # =============[ ข้อมูลเข้า ]===========
-    try:
-        data = json.loads(request.data)
-    except:
-        Alert_error("")
+    data = json.loads(request.data)
+
     try:  # 1
         print(Fore.RED)
         try:
@@ -333,9 +321,6 @@ def CayoshiM():
                     print(Fore.CYAN + ('Number of coins : '+Fore.YELLOW +
                           '{0:,} '+Fore.CYAN + unit[0]).format(amount_Action))
 
-                    # -------------------------------------------------
-                    # เมื่อ เกิด Alert ให้เก็บข้อมูลลง DATA
-                    #fu_Mysql.Alert_insert(userID, apikey, botAction, price,side, amount, symbol, passphrase, strategy_name)
             # ======================== ถ้าไม่สำเร็จ ให้ แจ้ง =================================================
             except:
                 if ifFailed == 0:
@@ -452,8 +437,8 @@ def CayoshiM():
                 Fore.RED + '===========================================================================')
             print('! error : !!! API Key  !!! Failed   !!! offline')
             return {'! error': 'API Key !Failed'}
-    return ""
 
-# if __name__ == '__main__':
 
-#     app.run(debug=False, host="0.0.0.0",  port=80)
+if __name__ == '__main__':
+
+    app.run(debug=False, host="0.0.0.0",  port=80)
